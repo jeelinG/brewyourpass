@@ -1,12 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brew My Pass</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Brew My Pass</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <header>
+    <img src="cauldron.png" alt="Cauldron" class="logo">
     <h1>Brew My Pass</h1>
-    <h2>Mix personal magic with powerful security</h2>
+    <p class="tagline">Mix personal magic with powerful security</p>
+    <nav>
+      <a href="index.html" class="nav-icon">🏠 Home</a>
+      <a href="securitytips.html" class="nav-icon">💡 Security Tips</a>
+      <a href="contactus.html" class="nav-icon">👤 Contact Us</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Step 1: Add Your Ingredients</h2>
+      <input type="text" id="favWord" placeholder="Favourite Word or Phrase" />
+      <input type="date" id="specialDate" />
+      <input type="text" id="luckySymbol" placeholder="Lucky Number or Symbol" />
+    </section>
+
+    <section class="card">
+      <h2>Step 2: Stir in Some Magic</h2>
+      <label>Password Length: <span id="lengthDisplay">12</span></label>
+      <input type="range" id="length" min="8" max="20" value="12" />
+      
+      <label>Shuffle Complexity:</label>
+      <select id="complexity">
+        <option>Basic</option>
+        <option>Medium</option>
+        <option>Complex</option>
+      </select>
+
+      <label><input type="checkbox" id="useCase" /> Use mixed case</label>
+      <label><input type="checkbox" id="useNumbers" /> Include numbers</label>
+      <label><input type="checkbox" id="useSymbols" /> Include symbols</label>
+    </section>
+
+    <button onclick="generatePassword()">Brew It!</button>
+    <div id="resultBox">
+      <input type="text" id="result" readonly />
+      <button onclick="copyPassword()">Copy</button>
+    </div>
+
+    <div class="buttons">
+      <button onclick="generatePassword()">Refresh Potion</button>
+      <button onclick="location.reload()">Start Over</button>
+    </div>
+  </main>
+
+  <footer>
+    <p class="disclaimer">Disclaimer: Lorem ipsum dolor sit amet...</p>
+  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
