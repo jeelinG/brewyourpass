@@ -4,50 +4,108 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Brew My Pass</title>
+
   <link rel="stylesheet" href="style.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+
 </head>
+
+
 <body>
   <header>
-    <img src="cauldron.png" alt="Cauldron" class="logo">
-    <h1>Brew My Pass</h1>
-    <p class="tagline">Mix personal magic with powerful security</p>
+
+    <div class="container">
+      <div class="image">
+        <img src="/pictures/pic_cauldron.png">
+      </div>
+      <div class="text">
+        <center><h1>Brew My Pass</h1>
+        <p class="tagline">Mix personal magic with powerful security</p></center>
+      </div>
+    </div>
+
     <nav>
       <a href="index.html" class="nav-icon">🏠 Home</a>
       <a href="securitytips.html" class="nav-icon">💡 Security Tips</a>
-      <a href="contactus.html" class="nav-icon">👤 Contact Us</a>
+      <a href="contactus.html" class="nav-icon">📬 Contact Us</a>
     </nav>
   </header>
 
   <main>
     <section class="card">
-      <h2>Step 1: Add Your Ingredients</h2>
+      <h3>Step 1: Add Your Ingredients</h3>
       <input type="text" id="favWord" placeholder="Favourite Word or Phrase" />
       <input type="date" id="specialDate" />
       <input type="text" id="luckySymbol" placeholder="Lucky Number or Symbol" />
     </section>
 
     <section class="card">
-      <h2>Step 2: Stir in Some Magic</h2>
-      <label>Password Length: <span id="lengthDisplay">12</span></label>
-      <input type="range" id="length" min="8" max="20" value="12" />
-      
-      <label>Shuffle Complexity:</label>
-      <select id="complexity">
-        <option>Basic</option>
-        <option>Medium</option>
-        <option>Complex</option>
-      </select>
+      <h3>Step 2: Stir in Some Magic</h3>
 
-      <label><input type="checkbox" id="useCase" /> Use mixed case</label>
-      <label><input type="checkbox" id="useNumbers" /> Include numbers</label>
-      <label><input type="checkbox" id="useSymbols" /> Include symbols</label>
+
+      <label class="slider-title">Password Length 
+        <br> <span id="lengthDisplay">12</span></label>
+      <input type="range" id="length" min="8" max="20" value="12" />
+          <div class="slider-labels">
+            <span>8 characters (min)</span>
+            <span>20 characters (max)</span>
+         </div>
+      
+
+  <div class="slider-section">
+    <label for="complexity" class="slider-title">Shuffle Complexity</label>
+    <input type="range" min="0" max="2" step="1" value="0" id="complexity">
+    <div class="slider-labels">
+      <span>Basic</span>
+      <span>Medium</span>
+      <span>Complex</span>
+    </div>
+  </div>
+
+
+ <div class="switch-group">
+    <label class="switch-label">
+      Use mixed case
+      <input type="checkbox" id="useCase">
+      <span class="slider"></span>
+    </label>
+
+    <label class="switch-label">
+      Include numbers
+      <input type="checkbox" id="useNumbers">
+      <span class="slider"></span>
+    </label>
+
+    <label class="switch-label">
+      Include symbols
+      <input type="checkbox" id="useSymbols">
+      <span class="slider"></span>
+    </label>
+  </div>
+
     </section>
 
-    <button onclick="generatePassword()">Brew It!</button>
+
+    <div class="container">
+      <div class="image">
+        <img src="/pictures/pic_cauldron.png" width="100" height="100">
+      </div>
+      <button id="myButton" onclick="generatePassword()">Brew It!</button>
+    </div>
+
+
     <div id="resultBox">
       <input type="text" id="result" readonly />
       <button onclick="copyPassword()">Copy</button>
     </div>
+
 
     <div class="buttons">
       <button onclick="generatePassword()">Refresh Potion</button>
@@ -56,7 +114,11 @@
   </main>
 
   <footer>
-    <p class="disclaimer">Disclaimer: Lorem ipsum dolor sit amet...</p>
+    <p class="disclaimer">Disclaimer: This website is created for learning purposes only. 
+      The information provided here should not be considered professional advice. 
+      Please note that we make no guarantees regarding the accuracy, completeness, or reliability of the contents of this website. 
+      Any actions you take based on the contents of this website are at your own risk. 
+      We are not liable for any losses or damages incurred from the use of this website.</p>
   </footer>
   <script src="script.js"></script>
 </body>

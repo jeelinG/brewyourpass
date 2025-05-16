@@ -1,48 +1,109 @@
+/* This section is for Brew My Pass heading */
+h1 {
+  font-family: 'American Typewriter', serif;
+  font-size: 66px;
+  color: white;
+}
+
+
+/* This section is for tagline below heading*/
+.tagline {
+  font-family: 'Caveat';
+  color: black;
+}
+
+
+/* This section is for heading in the card*/
+h3 {
+  font-family: 'American Typewriter', serif;
+  font-size: 20px;
+  color: black;
+}
+
+
+/* This section is for overall background and font across site*/
 body {
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(to bottom right, #c6b8f2, #f7c2e7);
+  font-family: 'Archivo', sans-serif;
+  font-size: 16px;
+  background: linear-gradient(135deg, #f5a3c7 0%, #c79de6 50%, #9dddf5 100%);
   margin: 0;
   padding: 0;
   text-align: center;
-}
-
-header {
-  background-color: #a88cd4;
-  color: white;
-  padding: 1rem 0;
-}
-
-.logo {
-  width: 60px;
-}
-
-nav {
-  margin-top: 10px;
-}
-
-.nav-icon {
-  margin: 0 10px;
-  text-decoration: none;
-  color: white;
-}
-
-.tagline {
-  font-style: italic;
 }
 
 main {
   padding: 1rem;
 }
 
+
+/* This section is for the nav bar on top*/
+nav {
+  background-color: #8770c8;
+  margin-top: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.nav-icon {
+  margin: 30px;
+  text-decoration: none;
+  color: white;
+}
+
+.nav-icon:hover {
+  color: #e5cbf7; /* Font color on hover */
+}
+
+
+/* This section is for the Brew It button*/
+#myButton {
+  font-family: 'American Typewriter', serif;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+}
+
+#myButton:hover {
+  color: #e5cbf7; /* Font color on hover */
+}
+
+
+/* This section is for cards*/
 .card {
-  background-color: #f4e8fa;
+  background-color:  #e3d3ed;
   margin: 1rem auto;
   padding: 1rem;
   border-radius: 20px;
-  max-width: 400px;
+  max-width: 450px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+#favWord {
+        width: 95%; /* Set the width as a percentage of the parent element */
+    }
+
+#specialDate {
+        width: 95%; /* Set the width as a percentage of the parent element */
+    }
+
+#luckySymbol {
+        width: 95%; /* Set the width as a percentage of the parent element */
+    }
+
+#contactField {
+        width: 95%; /* Set the width as a percentage of the parent element */
+    }
+
+#contactField2 {
+        width: 95%; /* Set the width as a percentage of the parent element */
+        height: 80px;
+    }
+
+
+    
+
+
+/* This section is for ?????*/
 input[type="text"],
 input[type="date"],
 input[type="email"],
@@ -61,17 +122,20 @@ input[type="range"] {
 }
 
 button {
-  background-color: #c27ac2;
+  background-color: #8770c8;
   border: none;
   color: white;
   padding: 0.7rem 1.2rem;
   border-radius: 10px;
   margin: 10px 5px;
   cursor: pointer;
+  font-family: 'Archivo', sans-serif;
+  font-size: 16px;
 }
 
 button:hover {
   background-color: #a65fa6;
+  color: #e5cbf7; /* Font color on hover */
 }
 
 ul {
@@ -104,4 +168,134 @@ footer {
   font-size: 0.8rem;
   padding: 1rem;
   color: #333;
+}
+
+.container {
+ display: grid;
+ align-items: center; 
+ grid-template-columns: 1fr 1fr 1fr;
+ column-gap: 3px;
+}
+
+img {
+  max-width: 70%;
+  max-height:70%;
+}
+
+.text {
+  font-size: 30px;
+}
+
+
+
+/* Container for the group */
+.switch-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 30px;
+  font-family: sans-serif;
+}
+
+/* Label wraps text and switch */
+.switch-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Hide default checkbox */
+.switch-label input[type="checkbox"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Custom slider */
+.slider {
+  position: relative;
+  width: 50px;
+  height: 26px;
+  background-color: #ccc;
+  border-radius: 50px;
+  transition: background-color 0.2s;
+}
+
+/* Circle knob */
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  top: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+/* When checkbox is checked — updated to pink */
+.switch-label input:checked + .slider {
+  background-color: #fa5c97;
+}
+
+.switch-label input:checked + .slider::before {
+  transform: translateX(24px);
+}
+
+.slider-section {
+  width: 300px;
+  margin: auto;
+}
+
+.slider-title {
+  font-size: 16px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+  color: #3a3a3a;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #fa5c97;
+  border-radius: 5px;
+  outline: none;
+  margin-bottom: 8px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  background: white;
+  border: 3px solid #fa5c97;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 20px;
+  width: 20px;
+  background: white;
+  border: 3px solid #fa5c97;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: black;
+}
+
+.slider-labels span.active {
+  color: #fa5c97;
+  font-weight: bold;
 }

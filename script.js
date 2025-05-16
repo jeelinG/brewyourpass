@@ -54,3 +54,24 @@ function copyPassword() {
   document.execCommand("copy");
   alert("Password copied!");
 }
+
+
+    // Set initial display based on default value
+    updateDisplay(slider.value);
+
+    // Update display on slider input
+    slider.addEventListener("input", function() {
+      updateDisplay(this.value);
+    });
+
+        const slider = document.getElementById('complexity');
+    const labels = document.querySelectorAll('.slider-labels span');
+
+    slider.addEventListener('input', () => {
+      labels.forEach((label, index) => {
+        label.classList.toggle('active', index == slider.value);
+      });
+    });
+
+    // Set default active
+    labels[slider.value].classList.add('active');
