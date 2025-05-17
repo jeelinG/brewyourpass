@@ -1,8 +1,9 @@
 /* This section is for Brew My Pass heading */
 h1 {
-  font-family: 'American Typewriter', serif;
-  font-size: 66px;
+  font-family: 'Style Script', serif;
+  font-size: 80px;
   color: white;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5); /* 2px right, 2px down, 3px blur radius, 0.5 opacity */
 }
 
 
@@ -10,6 +11,22 @@ h1 {
 .tagline {
   font-family: 'Caveat';
   color: black;
+  font-size: 30px;
+}
+
+
+/* This section is for formatting position of header title*/
+
+.container {
+ display: grid; 
+ align-items: center; 
+ grid-template-columns: 1fr 1fr 1fr;
+ column-gap: 3px;
+}
+
+img {
+  max-width: 70%;
+  max-height:70%;
 }
 
 
@@ -18,6 +35,14 @@ h3 {
   font-family: 'American Typewriter', serif;
   font-size: 20px;
   color: black;
+}
+
+/* This section is for heading in intro para*/
+h2 {
+  font-family: 'American Typewriter', serif;
+  font-size: 25px;
+  color: white;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5); /* 2px right, 2px down, 3px blur radius, 0.5 opacity */
 }
 
 
@@ -103,27 +128,7 @@ nav {
     }
 
 
-
-
-
-/* This section is for ?????*/
-input[type="text"],
-input[type="date"],
-input[type="email"],
-textarea,
-select {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin: 0.5rem 0;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-}
-
-input[type="range"] {
-  width: 100%;
-}
-
+/* This section is for link buttons below page*/
 button {
   background-color: #8770c8;
   border: none;
@@ -141,131 +146,37 @@ button:hover {
   color: #e5cbf7; /* Font color on hover */
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-}
 
-ul li {
-  background-color: #fff;
-  margin: 0.5rem 0;
-  padding: 0.7rem;
-  border-radius: 10px;
-  border: 1px solid #ffc3d9;
-}
-
-#resultBox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-}
-
-#result {
-  width: 30%;
-  padding: 10px;
-  border-radius: 10px;
-  align-items: center;
-}
-
+/* This section is for footer*/
 footer {
   font-size: 0.8rem;
   padding: 1rem;
   color: #333;
 }
 
-.container {
- display: grid;
- align-items: center; 
- grid-template-columns: 1fr 1fr 1fr;
- column-gap: 3px;
-}
-
-img {
-  max-width: 70%;
-  max-height:70%;
-}
-
-.text {
-  font-size: 30px;
-}
 
 
 
-/* Container for the group */
-.switch-group {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin: 30px;
-  font-family: sans-serif;
-}
 
-/* Label wraps text and switch */
-.switch-label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 16px;
-  cursor: pointer;
-  position: relative;
-}
 
-/* Hide default checkbox */
-.switch-label input[type="checkbox"] {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
 
-/* Custom slider */
-.slider {
-  position: relative;
-  width: 50px;
-  height: 26px;
-  background-color: #ccc;
-  border-radius: 50px;
-  transition: background-color 0.2s;
-}
-
-/* Circle knob */
-.slider::before {
-  content: "";
-  position: absolute;
-  height: 20px;
-  width: 20px;
-  left: 3px;
-  top: 3px;
-  background-color: white;
-  border-radius: 50%;
-  transition: transform 0.2s;
-}
-
-/* When checkbox is checked — updated to pink */
-.switch-label input:checked + .slider {
-  background-color: #fa5c97;
-}
-
-.switch-label input:checked + .slider::before {
-  transform: translateX(24px);
-}
-
-.slider-section {
-  width: 300px;
-  margin: auto;
-}
-
-.slider-title {
-  font-size: 16px;
-  font-weight: bold;
+/* Input styles */
+input[type="text"],
+input[type="date"],
+input[type="email"],
+textarea,
+select {
   display: block;
-  margin-bottom: 8px;
-  color: #3a3a3a;
+  width: 100%;
+  padding: 10px;
+  margin: 0.5rem 0;
+  border-radius: 10px;
+  border: 1px solid #ccc;
 }
 
 input[type="range"] {
-  -webkit-appearance: none;
   width: 100%;
+  -webkit-appearance: none;
   height: 6px;
   background: #fa5c97;
   border-radius: 5px;
@@ -292,6 +203,35 @@ input[type="range"]::-moz-range-thumb {
   cursor: pointer;
 }
 
+/* Result display */
+#resultBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+#result {
+  width: 30%;
+  padding: 10px;
+  border-radius: 10px;
+  align-items: center;
+}
+
+/* Slider section */
+.slider-section {
+  width: 300px;
+  margin: auto;
+}
+
+.slider-title {
+  font-size: 16px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+  color: #3a3a3a;
+}
+
 .slider-labels {
   display: flex;
   justify-content: space-between;
@@ -302,4 +242,18 @@ input[type="range"]::-moz-range-thumb {
 .slider-labels span.active {
   color: #fa5c97;
   font-weight: bold;
+}
+
+/* List styles */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  background-color: #fff;
+  margin: 0.5rem 0;
+  padding: 0.7rem;
+  border-radius: 10px;
+  border: 1px solid #ffc3d9;
 }

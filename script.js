@@ -6,33 +6,27 @@ function generatePassword() {
   const favWord = document.getElementById("favWord").value || "magic";
   const date = document.getElementById("specialDate").value || "20000101";
   const symbol = document.getElementById("luckySymbol").value || "#";
-
   const len = parseInt(document.getElementById("length").value);
-  const useCase = document.getElementById("useCase").checked;
-  const useNum = document.getElementById("useNumbers").checked;
-  const useSym = document.getElementById("useSymbols").checked;
   const complexity = document.getElementById("complexity").value;
 
-  let base = favWord + date.replaceAll("-", "") + symbol;
-  let chars = base.split("");
+  const base = favWord + date.replaceAll("-", "") + symbol;
 
-  // Mix case
-  if (useCase) {
-    chars = chars.map(ch => Math.random() > 0.5 ? ch.toUpperCase() : ch.toLowerCase());
-  }
+  // Always include character pools
+  const lower = "abcdefghijklmnopqrstuvwxyz";
+  const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const numbers = "0123456789";
+  const symbols = "!@#$%^&*()_+-=[]{}";
 
-  // Add numbers
-  if (useNum) {
-    chars.push(..."1234567890");
-  }
+  // Combine all characters
+  let allChars = [...base, ...lower, ...upper, ...numbers, ...symbols];
 
-  // Add symbols
-  if (useSym) {
-    chars.push(..."!@#$%^&*()_+-=[]{}");
-  }
+  // Randomize casing of base characters
+  allChars = allChars.map(ch =>
+    Math.random() > 0.5 ? ch.toUpperCase() : ch.toLowerCase()
+  );
 
-  // Shuffle based on complexity
-  let shuffled = shuffle(chars, complexity).slice(0, len);
+  // Shuffle and slice to desired length
+  const shuffled = shuffle(allChars, complexity).slice(0, len);
   document.getElementById("result").value = shuffled.join('');
 }
 
@@ -55,23 +49,29 @@ function copyPassword() {
   alert("Password copied!");
 }
 
+// Setup slider label visuals
+const lengthSlider = document.getElementById('length');
+const lengthDisplay = document.getElementById('lengthDisplay');
+const complexitySlider = document.getElementById('complexity');
+const complexityLabels = document.querySelectorAll('#complexityLabels span');
 
-    // Set initial display based on default value
-    updateDisplay(slider.value);
+function updateLengthDisplay(value) {
+  lengthDisplay.textContent = value;
+}
 
-    // Update display on slider input
-    slider.addEventListener("input", function() {
-      updateDisplay(this.value);
-    });
+updateLengthDisplay(lengthSlider.value);
 
-        const slider = document.getElementById('complexity');
-    const labels = document.querySelectorAll('.slider-labels span');
+lengthSlider.addEventListener('input', () => {
+  updateLengthDisplay(lengthSlider.value);
+});
 
-    slider.addEventListener('input', () => {
-      labels.forEach((label, index) => {
-        label.classList.toggle('active', index == slider.value);
-      });
-    });
+complexitySlider.addEventListener('input', () => {
+  complexityLabels.forEach((label, index) => {
+    label.classList.toggle('active', parseInt(complexitySlider.value) === index);
+  });
+});
 
-    // Set default active
-    labels[slider.value].classList.add('active');
+// Set initial active state for complexity labels based on the initial slider value
+complexityLabels.forEach((label, index) => {
+  label.classList.toggle('active', parseInt(complexitySlider.value) === index);
+});
