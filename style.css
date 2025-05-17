@@ -23,7 +23,7 @@ h3 {
 
 /* This section is for overall background and font across site*/
 body {
-  font-family: 'Archivo', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   background: linear-gradient(135deg, #f5a3c7 0%, #c79de6 50%, #9dddf5 100%);
   margin: 0;
@@ -40,8 +40,8 @@ main {
 nav {
   background-color: #8770c8;
   margin-top: 10px;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 18px;
+  padding-bottom: 18px;
 }
 
 .nav-icon {
@@ -58,9 +58,11 @@ nav {
 /* This section is for the Brew It button*/
 #myButton {
   font-family: 'American Typewriter', serif;
-  font-size: 20px;
+  font-size: 30px;
   color: white;
   font-weight: bold;
+  height: 80px;
+  width: 30%;
 }
 
 #myButton:hover {
@@ -76,6 +78,7 @@ nav {
   border-radius: 20px;
   max-width: 450px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Open Sans', sans-serif;
 }
 
 #favWord {
@@ -100,7 +103,7 @@ nav {
     }
 
 
-    
+
 
 
 /* This section is for ?????*/
@@ -129,7 +132,7 @@ button {
   border-radius: 10px;
   margin: 10px 5px;
   cursor: pointer;
-  font-family: 'Archivo', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 16px;
 }
 
@@ -159,9 +162,10 @@ ul li {
 }
 
 #result {
-  width: 60%;
+  width: 30%;
   padding: 10px;
   border-radius: 10px;
+  align-items: center;
 }
 
 footer {
