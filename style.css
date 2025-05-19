@@ -52,13 +52,13 @@
     }
 
     .nav-icon {
-      margin: 15px;
+      margin: 10px;
       text-decoration: none;
       color: white;
     }
 
     .nav-icon:hover {
-      color: #F3CFC6;
+      color: #e3d3ed;
       font-weight: bold;
     }
 
@@ -143,7 +143,8 @@
       font-weight: bold;
       display: block;
       margin-bottom: 8px;
-      color: #3a3a3a;
+      font-size: 13px;
+      color: black;
     }
 
     #length-display  {
@@ -193,7 +194,7 @@
     }
 
     #generate-btn:hover {
-    color: #F3CFC6; /* Font color on hover */
+    color: #e3d3ed; /* Font color on hover */
     }
 
     .buttons button,
@@ -212,7 +213,8 @@
     .buttons button:hover,
     button:hover {
       background-color: #906ac9;
-      color: #F3CFC6;
+      color: #e3d3ed;
+      font-weight: bold;
     }
 
 

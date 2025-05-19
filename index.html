@@ -46,17 +46,23 @@
     <section class="intropara">
       <h2>Secure. Personal. Effortless.</h2>
       <p>
-        Generate strong passwords using familiar words, dates, or symbols.
-        <br><i>Brew My Pass</i> ensures that each password meets security standards.
-        <br>Simple, safe and tailored to you.
+        Create strong passwords using words, dates or symbols you know.
+        <br><i>Brew My Pass</i> makes sure they are safe and secure — Easy for you, hard for others.
       </p>
     </section>
 
     <section class="card">
       <h3>Step 1: Add Your Ingredients</h3>
-      <input type="text" id="fav-word" placeholder="Favourite Word or Phrase" />
+
+    <label for="complexity" id="cardHeading">Enter your favourite word or phrase (Max 30 chars)</label>
+      <input type="text" maxlength="30" id="fav-word" placeholder="Favourite Word or Phrase" />
+
+    <label for="complexity" id="cardHeading">Select a special date</label>
       <input type="date" id="special-date" />
+
+    <label for="complexity" id="cardHeading">Enter your lucky number or preferred symbol</label>
       <input type="text" id="lucky-symbol" placeholder="Lucky Number or Symbol" />
+    
     </section>
 
     <section class="card">
@@ -108,7 +114,7 @@
     </p>
 
     <a href="https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/">Free SVG Backgrounds and Patterns by SVGBackgrounds.com</a>
-    
+
   </footer>
 
 <script src="script.js"></script>

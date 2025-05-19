@@ -17,7 +17,7 @@
       const complexityRules = {
         basic: { letterSubstitutionChance: 0.1, caseChangeChance: 0.2, symbolInsertionChance: 0.1 },
         medium: { letterSubstitutionChance: 0.25, caseChangeChance: 0.4, symbolInsertionChance: 0.25 },
-        complex: { letterSubstitutionChance: 0.5, caseChangeChance: 0.6, symbolInsertionChance: 0.5 },
+        complex: { letterSubstitutionChance: 0.4, caseChangeChance: 0.5, symbolInsertionChance: 0.5 },
       };
 
       const substitutions = {
