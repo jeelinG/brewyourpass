@@ -56,18 +56,21 @@
 	    padding: 0px;
 	    margin: 0;
 	    background-color: #5352aa;
-	    text-align: center;
+      text-align: center; /* Default center alignment for larger screens */
+      overflow: hidden; /* Prevent potential overflow from floated elements */
       }
 
     li {
-	    display: inline;
+	    display: block;
       line-height: 45px;
       }
 
     li a {
 	    text-decoration: none;
+      display: block;
       color: lightgrey;
       padding: 7px 15px;
+      text-align: center; /* Center text within each link */
       }
 
     li a:hover {
@@ -258,10 +261,10 @@
 
 
     /*For responsive web design*/
-    @media (max-width: 768px) {
+    @media (max-width: 760px) {
       h1 { font-size: 48px; }
       #result { width: 90%; }
       .card { width: 90%; }
       .container { grid-template-columns: 1fr; row-gap: 1rem; }
+      }
 
-  }
