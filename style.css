@@ -20,22 +20,18 @@
     /*For formatting Brew My Pass heading*/
 
     .container {
-      display: grid;
-      align-items: center;
-      grid-template-columns: 1fr 1fr 1fr;
-      column-gap: 3px;
-      }
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+    }
 
-    img {
-      max-width: 70%;
-      max-height:70%;
-      }
 
     h1 {
       font-family: 'Style Script', serif;
-      font-size: 70px;
+      font-size: 82px;
       color: white;
       text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+      margin: 0px 0px;
       }
 
     .no-underline {
@@ -47,6 +43,7 @@
       font-family: 'Caveat';
       color: black;
       font-size: 25px;
+      margin-top: -12px;
     }
 
     /* This section is for the nav bar on top*/
@@ -79,23 +76,30 @@
       }
 
     .nav-icon {
-      margin: 10px;
       text-decoration: none;
       color: white;
+      width: 140px;
+      font-size: 16px;
+      font-weight: bold;
     }
 
     .nav-icon:hover {
       color: #e3d3ed;
       font-weight: bold;
-        }
-
+    }
+    nav {
+      position: sticky;
+      top: 0px;
+    }
 
     nav ul {
       list-style-type: none; /* Remove bullet points from the list */
       margin: 0;
       padding: 0;
       display: flex; /* Arrange list items horizontally */
-      }
+      justify-content: center;;
+
+    }
 
     /* This section is for headings in intro para and cards*/
 
@@ -259,12 +263,33 @@
       font-weight: bold;
     }
 
+    .image {
+    }
+    .cauldron {
+      width: 340px;
+      height: 340px;
+    }
+    .text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
 
     /*For responsive web design*/
     @media (max-width: 760px) {
       h1 { font-size: 48px; }
       #result { width: 90%; }
       .card { width: 90%; }
-      .container { grid-template-columns: 1fr; row-gap: 1rem; }
+      .image { justify-content: center; }
+      .cauldron { width: 250px; height: 250px; }
+      .nav-icon {
+        width: 108px;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 4px;
       }
+    }
+
+
+
 
