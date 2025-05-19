@@ -258,30 +258,5 @@
       #result { width: 90%; }
       .card { width: 90%; }
       .container { grid-template-columns: 1fr; row-gap: 1rem; }
-  
-    ul {
-        text-align: center;
-        display: flex;
-        align-items: center; /* centers items horizontally */
-        background-color: #5352aa;
-        padding: 0;
-    }
-
-    li {
-        display: block;
-        width: 100%;
-        text-align: center;
-        border-top: 1px solid #6c6bc4;
-    }
-
-    li:first-child {
-        border-top: none;
-    }
-
-    li a {
-        display: block;
-        width: 100%;
-        padding: 15px;
-    }
 
   }
