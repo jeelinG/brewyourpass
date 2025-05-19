@@ -1,38 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Brew My Pass</title>
 
   <link rel="stylesheet" href="style.css" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Caveat:wght@400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Caveat:wght@400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Style+Script&display=swap" rel="stylesheet">
 
-</head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LCN2Y7RDJZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
+    gtag('config', 'G-LCN2Y7RDJZ');
+  </script>
+
+</head>
 
 <body>
   <header>
     <div class="container">
       <div class="image">
-        <img src="/pictures/pic_cauldron.png" alt="Cauldron image">
+        <img src="pictures/pic_cauldron.png" alt="Cauldron image">
       </div>
       <div class="text">
-        <center>
-          <h1>Brew My Pass</h1>
-          <p class="tagline">Mix personal magic with powerful security</p>
-        </center>
+        <h1>Brew My Pass</h1>
+        <p class="tagline">Mix personal magic with powerful security</p>
       </div>
     </div>
 
@@ -44,50 +43,46 @@
   </header>
 
   <main>
-
-    <p class="intropara">
-    <h2>Secure. Personal. Effortless.</h2>
-    Generate strong passwords using familiar words, dates, or symbols.
-    <br><i>Brew My Pass</i> ensures that each password meets security standards.
-    <br>Simple, safe and tailored to you.
-    </p>
-
+    <section class="intropara">
+      <h2>Secure. Personal. Effortless.</h2>
+      <p>
+        Generate strong passwords using familiar words, dates, or symbols.
+        <br><i>Brew My Pass</i> ensures that each password meets security standards.
+        <br>Simple, safe and tailored to you.
+      </p>
+    </section>
 
     <section class="card">
       <h3>Step 1: Add Your Ingredients</h3>
-      <input type="text" id="favWord" placeholder="Favourite Word or Phrase" />
-      <input type="date" id="specialDate" />
-      <input type="text" id="luckySymbol" placeholder="Lucky Number or Symbol" />
+      <input type="text" id="fav-word" placeholder="Favourite Word or Phrase" />
+      <input type="date" id="special-date" />
+      <input type="text" id="lucky-symbol" placeholder="Lucky Number or Symbol" />
     </section>
 
     <section class="card">
       <h3>Step 2: Stir in Some Magic</h3>
-
-      <div class="slider-title">
-        <label for="complexity" class="slider-title">Password Length</label>
-        <span id="lengthDisplay">12</span>
-        <input type="range" id="length" min="8" max="20" value="12" />
-        </div>
-
+      
+      <label for="password-length" id="cardHeading">Preferred Password Length</label>
+      <span id="length-display">12</span>
+      <input type="range" id="password-length" min="8" max="20" value="12" />
+     
       <div class="slider-labels">
         <span>8 chars (min)</span>
         <span>20 chars (max)</span>
-        </div>
+      </div>
 
-      <div class="slider-section">
-        <label for="complexity" class="slider-title">Shuffle Complexity</label>
-        <input type="range" min="0" max="2" step="1" value="0" id="complexity">
-        </div>
+      <label for="complexity" id="cardHeading">Shuffle Complexity</label>
+      <input type="range" min="0" max="2" step="1" value="0" id="complexity" />
       
       <div class="slider-labels" id="complexityLabels">
         <span data-value="0" class="active">Basic</span>
         <span data-value="1">Medium</span>
         <span data-value="2">Complex</span>
-        </div>
+      </div>
 
     </section>
 
-    <button id="myButton" onclick="generatePassword()">Brew It!</button>
+    <button id="generate-btn">Brew It!</button>
 
     <div id="resultBox">
       <input type="text" id="result" readonly />
@@ -98,19 +93,21 @@
       <button onclick="generatePassword()">Refresh Potion</button>
       <button onclick="location.reload()">Start Over</button>
     </div>
+
+    <p id="error-message" class="error-message"></p>
   </main>
 
   <footer>
     <p class="disclaimer">
-      Disclaimer: This website is created for learning purposes only. 
-      The information provided here should not be considered professional advice. 
-      Please note that we make no guarantees regarding the accuracy, completeness, or reliability of the contents of this website. 
-      Any actions you take based on the contents of this website are at your own risk. 
+      Disclaimer: This website is created for learning purposes only.
+      The information provided here should not be considered professional advice.
+      Please note that we make no guarantees regarding the accuracy, completeness, or reliability of the contents of this website.
+      Any actions you take based on the contents of this website are at your own risk.
       We are not liable for any losses or damages incurred from the use of this website.
+
     </p>
   </footer>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
-
 </html>

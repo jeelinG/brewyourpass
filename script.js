@@ -1,77 +1,95 @@
-document.getElementById("length").addEventListener("input", function () {
-  document.getElementById("lengthDisplay").textContent = this.value;
-});
+    document.addEventListener('DOMContentLoaded', () => {
+      const favWordInput = document.getElementById('fav-word');
+      const specialDateInput = document.getElementById('special-date');
+      const luckySymbolInput = document.getElementById('lucky-symbol');
+      const passwordLengthInput = document.getElementById('password-length');
+      const lengthDisplay = document.getElementById('length-display');
+      const generateBtn = document.getElementById('generate-btn');
+      const errorMessage = document.getElementById('error-message');
+      const resultInput = document.getElementById('result');
+      const complexitySlider = document.getElementById('complexity');
+      const complexityLabels = document.querySelectorAll('#complexityLabels span');
+    
 
-function generatePassword() {
-  const favWord = document.getElementById("favWord").value || "magic";
-  const date = document.getElementById("specialDate").value || "20000101";
-  const symbol = document.getElementById("luckySymbol").value || "#";
-  const len = parseInt(document.getElementById("length").value);
-  const complexity = document.getElementById("complexity").value;
+      let complexity = 'basic';
 
-  const base = favWord + date.replaceAll("-", "") + symbol;
+      const complexityLevels = ['basic', 'medium', 'complex'];
+      const complexityRules = {
+        basic: { letterSubstitutionChance: 0.1, caseChangeChance: 0.2, symbolInsertionChance: 0.1 },
+        medium: { letterSubstitutionChance: 0.25, caseChangeChance: 0.4, symbolInsertionChance: 0.25 },
+        complex: { letterSubstitutionChance: 0.5, caseChangeChance: 0.6, symbolInsertionChance: 0.5 },
+      };
 
-  // Always include character pools
-  const lower = "abcdefghijklmnopqrstuvwxyz";
-  const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const numbers = "0123456789";
-  const symbols = "!@#$%^&*()_+-=[]{}";
+      const substitutions = {
+        a: ['@', '4'], e: ['3'], i: ['1', '!'], o: ['0'], s: ['$', '5'],
+        t: ['7'], l: ['1'], b: ['8'], z: ['2'], g: ['9']
+      };
 
-  // Combine all characters
-  let allChars = [...base, ...lower, ...upper, ...numbers, ...symbols];
+      function updateLengthDisplay(val) {
+        lengthDisplay.textContent = val;
+      }
 
-  // Randomize casing of base characters
-  allChars = allChars.map(ch =>
-    Math.random() > 0.5 ? ch.toUpperCase() : ch.toLowerCase()
-  );
+      passwordLengthInput.addEventListener('input', e => updateLengthDisplay(e.target.value));
 
-  // Shuffle and slice to desired length
-  const shuffled = shuffle(allChars, complexity).slice(0, len);
-  document.getElementById("result").value = shuffled.join('');
-}
+      complexitySlider.addEventListener('input', () => {
+        const value = parseInt(complexitySlider.value);
+        complexity = complexityLevels[value];
+        complexityLabels.forEach((label, index) => {
+          label.classList.toggle('active', index === value);
+        });
+      });
 
-function shuffle(arr, mode) {
-  const a = arr.slice();
-  let m = mode === "Complex" ? 30 : mode === "Medium" ? 15 : 5;
-  for (let i = 0; i < m; i++) {
-    const x = Math.floor(Math.random() * a.length);
-    const y = Math.floor(Math.random() * a.length);
-    [a[x], a[y]] = [a[y], a[x]];
-  }
-  return a;
-}
+      generateBtn.addEventListener('click', generatePassword);
 
-function copyPassword() {
-  const pass = document.getElementById("result");
-  pass.select();
-  pass.setSelectionRange(0, 99999);
-  document.execCommand("copy");
-  alert("Password copied!");
-}
+      function showError(msg) {
+        errorMessage.textContent = msg;
+      }
 
-// Setup slider label visuals
-const lengthSlider = document.getElementById('length');
-const lengthDisplay = document.getElementById('lengthDisplay');
-const complexitySlider = document.getElementById('complexity');
-const complexityLabels = document.querySelectorAll('#complexityLabels span');
+      function validateInputs() {
+        if (!favWordInput.value.trim()) return showError('Enter your favourite word.');
+        if (!specialDateInput.value) return showError('Select a special date.');
+        if (!luckySymbolInput.value.trim()) return showError('Enter your lucky symbol.');
+        errorMessage.textContent = '';
+        return true;
+      }
 
-function updateLengthDisplay(value) {
-  lengthDisplay.textContent = value;
-}
+      function generatePassword() {
+        if (!validateInputs()) return;
 
-updateLengthDisplay(lengthSlider.value);
+        const favWord = favWordInput.value.trim();
+        const specialDate = specialDateInput.value.replaceAll('-', '');
+        const luckySymbol = luckySymbolInput.value.trim();
+        const rules = complexityRules[complexity];
+        const targetLength = parseInt(passwordLengthInput.value);
 
-lengthSlider.addEventListener('input', () => {
-  updateLengthDisplay(lengthSlider.value);
-});
+        let base = (favWord + specialDate + luckySymbol).split('');
+        let result = [];
 
-complexitySlider.addEventListener('input', () => {
-  complexityLabels.forEach((label, index) => {
-    label.classList.toggle('active', parseInt(complexitySlider.value) === index);
-  });
-});
+        base.forEach(char => {
+          if (substitutions[char] && Math.random() < rules.letterSubstitutionChance) {
+            char = substitutions[char][Math.floor(Math.random() * substitutions[char].length)];
+          } else if (/[a-z]/i.test(char) && Math.random() < rules.caseChangeChance) {
+            char = char === char.toLowerCase() ? char.toUpperCase() : char.toLowerCase();
+          }
+          result.push(char);
+          if (Math.random() < rules.symbolInsertionChance) {
+            const randSymbol = luckySymbol[Math.floor(Math.random() * luckySymbol.length)];
+            result.push(randSymbol);
+          }
+        });
 
-// Set initial active state for complexity labels based on the initial slider value
-complexityLabels.forEach((label, index) => {
-  label.classList.toggle('active', parseInt(complexitySlider.value) === index);
-});
+        result = result.sort(() => 0.5 - Math.random()).join('').slice(0, targetLength);
+
+        while (result.length < 8) {
+          result += luckySymbol[Math.floor(Math.random() * luckySymbol.length)];
+        }
+
+        resultInput.value = result.slice(0, 20);
+      }
+    });
+
+    function copyPassword() {
+      const pass = document.getElementById('result').value;
+      navigator.clipboard.writeText(pass).then(() => alert('Password copied!'));
+    }
+  

@@ -1,265 +1,230 @@
-/* This section is for Brew My Pass heading */
-h1 {
-  font-family: 'Style Script', serif;
-  font-size: 80px;
-  color: white;
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5); /* 2px right, 2px down, 3px blur radius, 0.5 opacity */
-}
+    /*For overall formatting across site*/
+    
+    body {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 16px;
+      background: linear-gradient(135deg, #f5a3c7 0%, #c79de6 50%, #9dddf5 100%);
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      }
 
+      main {
+      padding: 1rem;
+      }
 
-/* This section is for tagline below heading*/
-.tagline {
-  font-family: 'Caveat';
-  color: black;
-  font-size: 30px;
-}
+    /*For formatting Brew My Pass heading*/
 
+    .container {
+      display: grid;
+      align-items: center;
+      grid-template-columns: 1fr 1fr 1fr;
+      column-gap: 3px;
+      }
 
-/* This section is for formatting position of header title*/
+    img {
+      max-width: 70%;
+      max-height:70%;
+      }
 
-.container {
- display: grid; 
- align-items: center; 
- grid-template-columns: 1fr 1fr 1fr;
- column-gap: 3px;
-}
+    h1 {
+      font-family: 'Style Script', serif;
+      font-size: 80px;
+      color: white;
+      text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+      }
 
-img {
-  max-width: 70%;
-  max-height:70%;
-}
-
-
-/* This section is for heading in the card*/
-h3 {
-  font-family: 'American Typewriter', serif;
-  font-size: 20px;
-  color: black;
-}
-
-#lengthDisplay {
-  color: #fa5c97;
-  font-size: 25px;
-}
-
-
-/* This section is for heading in intro para*/
-h2 {
-  font-family: 'American Typewriter', serif;
-  font-size: 25px;
-  color: white;
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5); /* 2px right, 2px down, 3px blur radius, 0.5 opacity */
-}
-
-
-/* This section is for overall background and font across site*/
-body {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
-  background: linear-gradient(135deg, #f5a3c7 0%, #c79de6 50%, #9dddf5 100%);
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
-
-main {
-  padding: 1rem;
-}
-
-
-/* This section is for the nav bar on top*/
-nav {
-  background-color: #8770c8;
-  margin-top: 10px;
-  padding-top: 18px;
-  padding-bottom: 18px;
-}
-
-.nav-icon {
-  margin: 30px;
-  text-decoration: none;
-  color: white;
-}
-
-.nav-icon:hover {
-  color: #e5cbf7; /* Font color on hover */
-}
-
-
-/* This section is for the Brew It button*/
-#myButton {
-  font-family: 'American Typewriter', serif;
-  font-size: 30px;
-  color: white;
-  font-weight: bold;
-  height: 80px;
-  width: 30%;
-}
-
-#myButton:hover {
-  color: #e5cbf7; /* Font color on hover */
-}
-
-
-/* This section is for cards*/
-.card {
-  background-color:  #e3d3ed;
-  margin: 1rem auto;
-  padding: 1rem;
-  border-radius: 20px;
-  max-width: 450px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  font-family: 'Open Sans', sans-serif;
-}
-
-#favWord {
-        width: 95%; /* Set the width as a percentage of the parent element */
+    .tagline {
+      font-family: 'Caveat';
+      color: black;
+      font-size: 30px;
     }
 
-#specialDate {
-        width: 95%; /* Set the width as a percentage of the parent element */
+    /* This section is for the nav bar on top*/
+
+    nav {
+      background-color: #5352aa;
+      margin-top: 10px;
+      padding: 18px;
     }
 
-#luckySymbol {
-        width: 95%; /* Set the width as a percentage of the parent element */
+    .nav-icon {
+      margin: 30px;
+      text-decoration: none;
+      color: white;
     }
 
-#contactField {
-        width: 95%; /* Set the width as a percentage of the parent element */
+    .nav-icon:hover {
+      color: #e5cbf7;
     }
 
-#contactField2 {
-        width: 95%; /* Set the width as a percentage of the parent element */
-        height: 80px;
+    /* This section is for headings in intro para and cards*/
+
+    h2 {
+      font-family: 'American Typewriter', serif;
+      font-size: 25px;
+      color: white;
+      text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    h3 {
+      font-family: 'American Typewriter', serif;
+      font-size: 20px;
+      color: black;
+    }
+
+    /* This section is for cards*/
+
+    .card {
+      background-color: #e3d3ed;
+      margin: 1rem auto;
+      padding: 1rem;
+      border-radius: 20px;
+      max-width: 450px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* This section is for input styles */
+
+    input[type="email"],
+    input[type="text"],
+    input[type="date"],
+    input[type="range"] {
+      display: block;
+      width: 95%;
+      padding: 10px;
+      margin: 0.5rem 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    #contactField {
+      height: 80px;
     }
 
 
-/* This section is for link buttons below page*/
-button {
-  background-color: #8770c8;
-  border: none;
-  color: white;
-  padding: 0.7rem 1.2rem;
-  border-radius: 10px;
-  margin: 10px 5px;
-  cursor: pointer;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
-}
+      /* This section is for slider bar */
 
-button:hover {
-  background-color: #a65fa6;
-  color: #e5cbf7; /* Font color on hover */
-}
+    input[type="range"]::-webkit-slider-runnable-track {
+      background: #fa5c97;
+      height: 10px;
+    }
+
+    input[type="range"] {-webkit-appearance: none; /* Remove default styles */
+        width: 95%;
+        }
+
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Remove default appearance */
+        background-color: #F3CFC6; /* Set your desired color */
+        width: 20px; /* Adjust width as needed */
+        height: 20px; /* Adjust height as needed */
+        cursor: pointer; /* Add pointer cursor */
+        border-radius: 15px;
+        transform: translate(0, -20%); /* Center the thumb */
+        }
+
+    .slider-section {
+      width: 90%;
+      margin: auto;
+      }
+
+    .slider-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      }
+
+    #cardHeading  {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+      color: #3a3a3a;
+    }
+
+    #length-display  {
+      font-weight: bold;
+      color: #fa5c97;
+      font-size: 20px;
+      }
+
+    .slider-labels span.active {
+      color: #fa5c97;
+      font-weight: bold;
+    }
+
+    /* Result display */
+
+    #resultBox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 1rem;
+    }
+
+    #result {
+      width: 60%;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    /* This section is for footer*/
+      footer {
+      font-size: 10px;
+      padding: 1rem;
+      color: #333;
+      }
+
+    /* This section is for buttons*/
+
+    #generate-btn {
+    font-family: 'American Typewriter', serif;
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+    height: 80px;
+    width: 30%;
+    }
+
+    #generate-btn:hover {
+    color: #e5cbf7; /* Font color on hover */
+    }
+
+    .buttons button,
+    button {
+      background-color: #5352aa;
+      border: none;
+      color: white;
+      padding: 0.7rem 1.2rem;
+      border-radius: 10px;
+      margin: 10px 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .buttons button:hover,
+    button:hover {
+      background-color: #906ac9;
+      color: #F3CFC6;
+    }
 
 
-/* This section is for footer*/
-footer {
-  font-size: 0.8rem;
-  padding: 1rem;
-  color: #333;
-}
+    /*unknown*/
 
+    .error-message {
+      color: red;
+      font-weight: bold;
+    }
 
+    .hidden {
+      display: none;
+    }
 
-
-
-
-
-/* Input styles */
-input[type="text"],
-input[type="date"],
-input[type="email"],
-textarea,
-select {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin: 0.5rem 0;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-}
-
-input[type="range"] {
-  width: 100%;
-  -webkit-appearance: none;
-  height: 6px;
-  background: #fa5c97;
-  border-radius: 5px;
-  outline: none;
-  margin-bottom: 8px;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  height: 20px;
-  width: 20px;
-  background: white;
-  border: 3px solid #fa5c97;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-input[type="range"]::-moz-range-thumb {
-  height: 20px;
-  width: 20px;
-  background: white;
-  border: 3px solid #fa5c97;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-/* Result display */
-#resultBox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-}
-
-#result {
-  width: 30%;
-  padding: 10px;
-  border-radius: 10px;
-  align-items: center;
-}
-
-/* Slider section */
-.slider-section {
-  width: 300px;
-  margin: auto;
-}
-
-.slider-title {
-  font-size: 16px;
-  font-weight: bold;
-  display: block;
-  margin-bottom: 8px;
-  color: #3a3a3a;
-}
-
-.slider-labels {
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  color: black;
-}
-
-.slider-labels span.active {
-  color: #fa5c97;
-  font-weight: bold;
-}
-
-/* List styles */
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-ul li {
-  background-color: #fff;
-  margin: 0.5rem 0;
-  padding: 0.7rem;
-  border-radius: 10px;
-  border: 1px solid #ffc3d9;
-}
+    @media (max-width: 768px) {
+      h1 { font-size: 48px; }
+      #result { width: 90%; }
+      .card { width: 90%; }
+      .container { grid-template-columns: 1fr; row-gap: 1rem; }
+    }
