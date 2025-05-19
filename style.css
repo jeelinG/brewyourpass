@@ -119,6 +119,8 @@
     .card {
       background-color: #e3d3ed;
       margin: 1rem auto;
+      margin-top: 20px;
+      margin-bottom: 20px;
       padding: 1rem;
       border-radius: 20px;
       max-width: 450px;
@@ -181,8 +183,16 @@
     #cardHeading  {
       font-weight: bold;
       display: block;
+      margin-top: 15px;
       margin-bottom: 8px;
       font-size: 13px;
+      color: black;
+    }
+
+    .qtips  {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 11px;
       color: black;
     }
 
