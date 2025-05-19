@@ -48,7 +48,7 @@
 
     ul {
 	    list-style-type: none;
-	    padding: 18px;
+	    padding: 0px;
 	    margin: 0;
 	    background-color: #5352aa;
 	    text-align: center;
@@ -56,14 +56,13 @@
 
     li {
 	    display: inline;
-      font-family: Arial;
-      line-height: 55px;
+      line-height: 45px;
       }
 
     li a {
 	    text-decoration: none;
       color: lightgrey;
-      padding: 20px 40px;
+      padding: 10px 20px;
       }
 
     li a:hover {
@@ -80,7 +79,8 @@
     .nav-icon:hover {
       color: #e3d3ed;
       font-weight: bold;
-    }
+        }
+
 
     nav ul {
       list-style-type: none; /* Remove bullet points from the list */
