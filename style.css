@@ -29,7 +29,7 @@
 
     h1 {
       font-family: 'Style Script', serif;
-      font-size: 80px;
+      font-size: 70px;
       color: white;
       text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
       }
@@ -202,6 +202,7 @@
       margin: 10px 5px;
       cursor: pointer;
       font-size: 16px;
+      font-family: 'Open Sans', sans-serif;
     }
 
     .buttons button:hover,
