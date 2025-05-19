@@ -55,7 +55,7 @@
     }
 
     .nav-icon:hover {
-      color: #e5cbf7;
+      color: #F3CFC6;
     }
 
     /* This section is for headings in intro para and cards*/
@@ -108,8 +108,9 @@
 
     input[type="range"]::-webkit-slider-runnable-track {
       background: #fa5c97;
+      border-radius: 15px;
       height: 10px;
-    }
+      }
 
     input[type="range"] {-webkit-appearance: none; /* Remove default styles */
         width: 95%;
@@ -154,6 +155,7 @@
       font-weight: bold;
     }
 
+
     /* Result display */
 
     #resultBox {
@@ -177,7 +179,8 @@
       color: #333;
       }
 
-    /* This section is for buttons*/
+    
+      /* This section is for buttons*/
 
     #generate-btn {
     font-family: 'American Typewriter', serif;
@@ -189,7 +192,7 @@
     }
 
     #generate-btn:hover {
-    color: #e5cbf7; /* Font color on hover */
+    color: #F3CFC6; /* Font color on hover */
     }
 
     .buttons button,
