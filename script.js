@@ -93,3 +93,10 @@
       navigator.clipboard.writeText(pass).then(() => alert('Password copied!'));
     }
   
+    function openTab(tabName) {
+  // Hide all sections
+  document.querySelectorAll('.tabcontent').forEach(el => el.style.display = 'none');
+  
+  // Show the selected section
+  document.getElementById(tabName).style.display = 'block';
+}
