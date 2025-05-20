@@ -80,7 +80,7 @@ function clearFieldError(input, errorElem) {
 favWordInput.addEventListener('input', () => {
   const value = favWordInput.value.trim();
   if (!value) {
-    setFieldError(favWordInput, favWordError, 'Key in text between 5 to 30 chars.');
+    setFieldError(favWordInput, favWordError, 'Key in phrases up to 50 chars.');
   } else if (!/^[A-Za-z\s]+$/.test(value)) {
     setFieldError(favWordInput, favWordError, 'Only letters and spaces are allowed.');
   } else {
@@ -117,7 +117,7 @@ function validateInputs() {
 
   // Favourite word
   if (!favWord) {
-    setFieldError(favWordInput, favWordError, 'Key in text between 5 to 30 chars.');
+    setFieldError(favWordInput, favWordError, 'Key in phrases up to 50 chars.');
     isValid = false;
   } else if (!/^[A-Za-z\s]+$/.test(favWord)) {
     setFieldError(favWordInput, favWordError, 'Only letters and spaces are allowed.');
