@@ -45,15 +45,23 @@
     <section class="card">
       <h3>Step 1: Add Your Ingredients</h3>
 
-    <label for="complexity" id="cardHeading">Enter your favourite word or phrase (Max 30 chars)</label>
-      <input type="text" maxlength="30" id="fav-word" placeholder="Favourite Word or Phrase" />
 
-    <label for="complexity" id="cardHeading">Select a special date</label>
-      <input type="date" id="special-date" />
+<!-- Favourite Word -->
+<label for="fav-word" id="cardHeading">Enter your favourite word or phrase (Max 30 chars)</label>
+<input type="text" maxlength="30" id="fav-word" placeholder="Favourite Word or Phrase" />
+<p id="fav-word-error" class="error-text hidden"></p>
 
-    <label for="complexity" id="cardHeading">Enter your lucky number or preferred symbol</label>
-      <input type="text" id="lucky-symbol" placeholder="Lucky Number or Symbol" />
-    
+<!-- Special Date -->
+<label for="special-date" id="cardHeading">Select a special date</label>
+<input type="date" id="special-date" />
+<p id="special-date-error" class="error-text hidden"></p>
+
+<!-- Lucky Symbol -->
+<label for="lucky-symbol" id="cardHeading">Enter your lucky number or preferred symbol</label>
+<input type="text" id="lucky-symbol" placeholder="Lucky Number or Symbol" />
+<p id="lucky-symbol-error" class="error-text hidden"></p>
+
+
     </section>
 
     <section class="card">
@@ -92,7 +100,8 @@
       <button onclick="location.reload()">Start Over</button>
     </div>
 
-    <p id="error-message" class="error-message"></p>
+    <div id="error-message" class="popup hidden"></div>
+
   </main>
 
   <footer>
@@ -110,6 +119,6 @@
   </footer>
 
 <script src="script.js"></script>
-
 </body>
+
 </html>
