@@ -197,5 +197,22 @@ function validateInputs() {
 }
 })
 
+//Form response
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('contactForm');
+    const responseDiv = document.getElementById('formResponse');
 
+    form.addEventListener('submit', function (e) {
+      e.preventDefault(); // Prevent actual form submission
+
+      // Get form values (optional)
+      const name = document.getElementById('contactName').value;
+
+      // Dummy response
+      responseDiv.textContent = `Thanks, ${name || 'friend'}! We'll get back to you soon.`;
+
+      // Optionally clear form
+      form.reset();
+    });
+  });
 

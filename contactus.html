@@ -27,12 +27,15 @@
     <section class="card">
       <h3>Let's get in touch!</h3>
       <div class="qtips">How can we help you today?</div> 
-      <form>
-        <input type="text" id="contactName" placeholder="Name" required />
-        <input type="email" id="contactEmail" placeholder="Email" required />
-        <input type="text" maxlength="300" id="contactField" placeholder="Message" required />
-        <button type="submit">Submit</button>
-      </form>
+
+<form id="contactForm">
+  <input type="text" id="contactName" placeholder="Name" required />
+  <input type="email" id="contactEmail" placeholder="Email" required />
+  <input type="text" maxlength="300" id="contactField" placeholder="Message" required />
+  <button type="submit">Submit</button>
+</form>
+
+<div id="formResponse" style="margin-top: 1rem; color: #5352aa; font-weight: bold;"></div>
 
     </section>
 
