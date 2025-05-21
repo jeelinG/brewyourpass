@@ -48,7 +48,7 @@
 
     /* This section is for the nav bar on top*/
 
-    ul {
+    .ulnavbar {
 	    list-style-type: none;
 	    padding: 0px;
 	    margin: 0;
@@ -57,7 +57,7 @@
       overflow: hidden; /* Prevent potential overflow from floated elements */
       }
 
-    li {
+    .linavbar {
 	    display: block;
       line-height: 45px;
       }
