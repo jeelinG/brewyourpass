@@ -2,62 +2,146 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brew My Pass</title>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Brew My Pass</title>
 
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Caveat:wght@400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Style+Script&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="style.css" />
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Caveat:wght@400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Style+Script&display=swap" rel="stylesheet">
+
 
 </head>
 
 <body>
-  <div id="nav-placeholder"></div>
-  <script>
-    fetch('header.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('nav-placeholder').innerHTML = data;
-      });
-  </script>
-
-  <main>
-    <section class="card">
-      <h3>Top 5 Tips for Improving Password Security</h3>
-      <ul>
-        <li>Never reveal your passwords to others or write them down</li>
-        <li>Use different passwords across accounts</li>
-        <li>Use a dependable password manager</li>
-        <li>Create complex passwords</li>
-        <li>Use multifactor authentication</li>
-      </ul>
+ <div id="nav-placeholder"></div>
+ <script>
+   fetch('header.html')
+     .then(res => res.text())
+     .then(data => {
+       document.getElementById('nav-placeholder').innerHTML = data;
+     });
+ </script>
 
 
-      <div class="stips">Ever wondered how to create strong passwords to protect your accounts and keep yourself cyber safe? 
-        Cyber Sandra is here with quick and easy tips on all things password-related!</div> 
+ <main>
+   <section class="card">
+     <h3>6 Tips to Improve Password Security</h3>
 
 
-      <div class="video-container">
-    <iframe 
-      src="https://www.youtube.com/embed/7ya1t51lIcQ?si=_OjdWIBkzspgtuZK" 
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen>
-    </iframe>
-  </div>
+<!-- Tip 1 -->
+        <div class="tip-card tip-1" data-tip="1">
+            <div class="tip-number">01</div>
+            <div class="tip-title">Create Strong, Unique Passwords</div>
+            <div class="tip-content">
+                <ul>
+                    <li><strong>Length matters: </strong>Aim for passwords that are at least 12 characters long; 14 or more is even better. Longer passwords are significantly harder to crack.</li>
+                    <li><strong>Mix it up: </strong>Use a combination of uppercase and lowercase letters, numbers, and symbols.</li>
+                    <li><strong>Avoid common words and phrases: </strong>Don't use dictionary words, names, dates of birth, pet names, or other easily guessable information.</li>
+                    <li><strong>Unique for each account: </strong>Use a different password for every website and application. If one account is compromised, the others will remain secure.</li>
+                    <li><strong>Consider passphrases: </strong>These are memorable sequences of unrelated words (e.g., "blue table jumping elephant"). They are long and relatively easy to remember but difficult to guess.</li>
+                </ul>
+            </div>
+            <div class="tip-icon">📋</div>
+        </div>
+        
+        <!-- Tip 2 -->
+        <div class="tip-card tip-2" data-tip="2">
+            <div class="tip-number">02</div>
+            <div class="tip-title">Use a Password Manager</div>
+            <div class="tip-content">
+                <ul>
+                    <li><strong>Secure storage: </strong>They store your passwords in an encrypted vault, so you only need to remember one strong master password.</li>
+                    <li><strong>Identify weak passwords: </strong>Many password managers can analyze your existing passwords and identify weak or reused ones.</li>
+                </ul>
+            </div>
+            <div class="tip-icon">🖱️</div>
+        </div>
+        
+        <!-- Tip 3 -->
+        <div class="tip-card tip-3" data-tip="3">
+            <div class="tip-number">03</div>
+            <div class="tip-title">Enable Multi-Factor Authentication (MFA)</div>
+            <div class="tip-content">
+                <ul>
+                    <li><strong>Add an extra layer of security: </strong>MFA requires a second verification step in addition to your password, such as a one-time code from an app, a fingerprint, or a security key.</li>
+                    <li><strong>Highly recommended: </strong>Enable MFA whenever it's offered, especially for important accounts like email, banking, and social media.</li>
+                </ul>
+            </div>
+            <div class="tip-icon">🎣</div>
+        </div>
+        
+        <!-- Tip 4 -->
+        <div class="tip-card tip-4" data-tip="4">
+            <div class="tip-number">04</div>
+            <div class="tip-title">Be Careful Where You Enter Passwords</div>
+            <div class="tip-content">
+                <ul>
+                    <li><strong>Use trusted networks: </strong>Avoid entering sensitive information, including passwords, on public Wi-Fi networks.</li>
+                    <li><strong>Check for secure connections: </strong>Ensure that the website you are on has "HTTPS" in the address bar and a padlock icon, indicating an encrypted connection.</li>
+                    <li><strong>Beware of phishing: </strong>Be cautious of emails, messages, or calls asking for your password. Legitimate services will never ask for your password in this way. Always access websites directly through bookmarks or by typing the address yourself.</li>
+                </ul>
+            </div>
+            <div class="tip-icon">🔑</div>
+        </div>
+        
+        <!-- Tip 5 -->
+        <div class="tip-card tip-5" data-tip="5">
+            <div class="tip-number">05</div>
+            <div class="tip-title">Manage and Maintain Your Passwords</div>
+            <div class="tip-content">
+                <ul>
+                    <li><strong>Don't share passwords: </strong>Never tell anyone your passwords, not even friends or family.</li>
+                    <li><strong>Avoid writing them down: </strong>If you must write them down, keep them in a secure place away from the device they protect, or consider writing down hints instead of the actual password.</li>
+                    <li><strong>Change compromised passwords immediately: </strong>If you suspect an account has been compromised, change the password immediately.</li>
+                    <li><strong>Consider periodic password updates: </strong>While not as critical as using strong, unique passwords, changing them occasionally can add another layer of security. However, prioritize creating strong and unique passwords in the first place.</li>
+                    <li><strong>Don't reuse old passwords: </strong>When changing passwords, don't use any that you have used before.</li>
+                    <li><strong>Be wary of "remember me" options: </strong>Use these cautiously, especially on shared devices.</li>
+                </ul>
+            </div>
+            <div class="tip-icon">🔒</div>
+        </div>
+        
+        <!-- Tip 6 -->
+        <div class="tip-card tip-6" data-tip="6">
+            <div class="tip-number">06</div>
+            <div class="tip-title">Educate Yourself and Others</div>
+            <div class="tip-content">
+             <ul>
+                    <li><strong>Stay informed: </strong>Keep up-to-date on the latest password security threats and best practices.</li>
+                    <li><strong>Educate family and friends: </strong>Share these tips with others to help them improve their online security.</li>
+                </ul>
+            </div>
+            <div class="tip-icon">🔄</div>
+        </div>
+        
 
-    </section>
-  </main>
+     <div class="stips">Ever wondered how to create strong passwords to protect your accounts and keep yourself cyber safe?
+       Cyber Sandra is here with quick and easy tips on all things password-related!</div>
+
+
+     <div class="video-container">
+   <iframe
+     src="https://www.youtube.com/embed/7ya1t51lIcQ?si=_OjdWIBkzspgtuZK"
+     title="YouTube video player"
+     frameborder="0"
+     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+     allowfullscreen>
+   </iframe>
+ </div>
+
+
+   </section>
+ </main>
+
 
 <footer>
-    <p class="disclaimer">Disclaimer: This website is created for learning purposes only. 
-      The information provided here should not be considered professional advice. 
-      Please note that we make no guarantees regarding the accuracy, completeness, or reliability of the contents of this website. 
-      Any actions you take based on the contents of this website are at your own risk. 
-      We are not liable for any losses or damages incurred from the use of this website.</p>
-  </footer>
+   <p class="disclaimer">Disclaimer: This website is created for learning purposes only.
+     The information provided here should not be considered professional advice.
+     Please note that we make no guarantees regarding the accuracy, completeness, or reliability of the contents of this website.
+     Any actions you take based on the contents of this website are at your own risk.
+     We are not liable for any losses or damages incurred from the use of this website.</p>
+ </footer>
 </body>
 </html>
