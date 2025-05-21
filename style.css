@@ -336,8 +336,7 @@
   border: 0;
 }
 
-
-        .tips-container {
+ .tips-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             max-width: 1200px;
@@ -351,8 +350,9 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
-            position: relative;
+            position: center;
             overflow: hidden;
+            text-align: relative;
             margin-bottom: 20px;
         }
         
@@ -387,18 +387,17 @@
         }
         
         .tip-content ul {
-            margin-left: 1.5rem;
             margin-top: 0.5rem;
         }
         
         .tip-content li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
         }
         
         .tip-icon {
             position: absolute;
             bottom: 1rem;
             right: 1rem;
-            opacity: 0.2;
+            opacity: 1;
             font-size: 2.5rem;
         }
