@@ -10,36 +10,27 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Caveat:wght@400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Style+Script&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
   <div id="nav-placeholder"></div>
-  <script>
-    fetch('header.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('nav-placeholder').innerHTML = data;
-      });
-  </script>
 
   <main>
     <section class="card">
       <h3>Let's get in touch!</h3>
       <div class="qtips">How can we help you today?</div> 
 
-<form id="contactForm">
-  <input type="text" id="contactName" placeholder="Name" required />
-  <input type="email" id="contactEmail" placeholder="Email" required />
-  <input type="text" maxlength="300" id="contactField" placeholder="Message" required />
-  <button type="submit">Submit</button>
-</form>
+  <form id="contactForm">
+    <input type="text" id="contactName" placeholder="Name" required />
+    <input type="email" id="contactEmail" placeholder="Email" required />
+    <input type="text" maxlength="300" id="contactField" placeholder="Message" required />
+    <button type="submit">Submit</button>
+    <button type="submit" onclick="form.reset()">Reset</button>
+  </form>
 
-<div id="formResponse" style="margin-top: 1rem; color: #5352aa; font-weight: bold;"></div>
+  <div id="formResponse" style="margin-top: 1rem; color: #5352aa; font-weight: bold;"></div>
 
-    </section>
-
-  <script src="script.js"></script>
+  </section>
   </main>
 
 <footer>
@@ -50,6 +41,6 @@
       We are not liable for any losses or damages incurred from the use of this website.</p>
   </footer>
 
-
+<script src="script.js"></script>
 </body>
 </html>

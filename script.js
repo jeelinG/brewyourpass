@@ -1,4 +1,16 @@
+
+//Fetch header for all pages
+
+fetch('header.html')
+    .then(res => res.text())
+    .then(data => {
+    document.getElementById('nav-placeholder').innerHTML = data;
+    });
+
+//Password generator
+
 document.addEventListener('DOMContentLoaded', () => {
+    
     // Password generator - references
     const favWordInput = document.getElementById('fav-word');
     const specialDateInput = document.getElementById('special-date');
@@ -17,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const copyBtn = document.getElementById('copy-btn');
 
-    // complexity of password and probability
+    // Complexity of password and probability
     let complexity = 'basic';
 
     const complexityLevels = ['basic', 'medium', 'complex'];
@@ -58,16 +70,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Generate password
     generateBtn.addEventListener('click', generatePassword);
 
-    // Reusable function for setting field errors
+    // Set field errors
     function setFieldError(input, errorElem, message) {
         input.classList.add('input-error');
         errorElem.textContent = message;
         errorElem.classList.remove('hidden');
     }
 
-    // Reusable function for clearing field errors
+    // Clear field errors
     function clearFieldError(input, errorElem) {
         input.classList.remove('input-error');
         errorElem.textContent = '';
@@ -202,32 +215,21 @@ document.addEventListener('DOMContentLoaded', () => {
         copyBtn.addEventListener('click', copyPassword);
     }
 
-    // Function to open a specific tab (for potential tabbed interface)
-    function openTab(tabName) {
-        // Hide all sections with the class 'tabcontent'
-        document.querySelectorAll('.tabcontent').forEach(el => el.style.display = 'none');
-        // Show the selected section by its ID
-        document.getElementById(tabName).style.display = 'block';
-    }
 });
 
 // Form submission handling 
-document.addEventListener('DOMContentLoaded', function () {
-   const form = document.getElementById('contactForm');
-   const responseDiv = document.getElementById('formResponse');
-
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('contactForm');
+        const responseDiv = document.getElementById('formResponse');
 
    form.addEventListener('submit', function (e) {
      e.preventDefault(); // Prevent actual form submission
 
-
      // Get form values (optional)
      const name = document.getElementById('contactName').value;
 
-
      // Dummy response
      responseDiv.textContent = `Thanks, ${name || 'friend'}! We'll get back to you soon.`;
-
 
      // Optionally clear form
      form.reset();
