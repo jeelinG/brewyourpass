@@ -16,6 +16,9 @@ const favWordError = document.getElementById('fav-word-error');
 const specialDateError = document.getElementById('special-date-error');
 const luckySymbolError = document.getElementById('lucky-symbol-error');
 
+const copyBtn = document.getElementById('copy-btn');
+
+
  // complexity of password and probability
      let complexity = 'basic';
 
@@ -183,13 +186,16 @@ function validateInputs() {
        resultInput.value = result.slice(0, 20);
      }
 
-      function copyPassword() {
+    function copyPassword() {
      const pass = document.getElementById('result').value;
      navigator.clipboard.writeText(pass).then(() => alert('Password copied!'));
-   }
+  
+    if (copyBtn) {
+    copyBtn.addEventListener('click', copyPassword);
+    }
+}
+
     function openTab(tabName) {
-
-
  // Hide all sections
  document.querySelectorAll('.tabcontent').forEach(el => el.style.display = 'none');
   // Show the selected section
