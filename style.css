@@ -384,9 +384,12 @@
     font-size: 14px;
     display: grid;        /* Enable grid layout */
     place-items: center; /* Centers content both horizontally and vertically */
-    margin-bottom: 20px;
 }
-        
+     
+.cybersandra {
+  margin-bottom: 20px;
+}
+
 .tip-content ul {
     margin-top: 0.5rem;
     list-style-type: none;
