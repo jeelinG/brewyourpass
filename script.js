@@ -211,25 +211,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Form submission handling (for a contact form, likely in a different section)
+// Form submission handling 
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('contactForm');
-    const responseDiv = document.getElementById('formResponse');
+   const form = document.getElementById('contactForm');
+   const responseDiv = document.getElementById('formResponse');
 
-    if (form) {
-        form.addEventListener('submit', function (e) {
-            e.preventDefault(); // Prevent actual form submission
 
-            // Get form values (optional)
-            const name = document.getElementById('contactName').value;
-            const email = document.getElementById('contactEmail').value;
-            const message = document.getElementById('contactMessage').value;
+   form.addEventListener('submit', function (e) {
+     e.preventDefault(); // Prevent actual form submission
 
-            // Simulate form submission and display a dummy response
-            responseDiv.textContent = `Thanks, ${name || 'friend'}! We've received your message and will get back to you soon.`;
 
-            // Optionally clear the form after submission
-            form.reset();
+     // Get form values (optional)
+     const name = document.getElementById('contactName').value;
+
+
+     // Dummy response
+     responseDiv.textContent = `Thanks, ${name || 'friend'}! We'll get back to you soon.`;
+
+
+     // Optionally clear form
+     form.reset();
         });
-    }
-});
+    })
+
