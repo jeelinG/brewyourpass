@@ -343,19 +343,24 @@
             margin: 0 auto;
         }
         
-        .tip-card {
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-            position: center;
-            overflow: hidden;
-            text-align: relative;
-            margin-bottom: 20px;
-        }
-        
+.tip-card {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  text-align: center;  /* Fixed from 'relative' */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  position: relative;  /* Fixed from 'center' */
+}
+
+  
         .tip-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
@@ -382,22 +387,39 @@
             color: #0f172a;
         }
         
-        .tip-content {
-            font-size: 14px;
-        }
+.tip-content {
+    font-size: 14px;
+    display: grid;        /* Enable grid layout */
+    place-items: center; /* Centers content both horizontally and vertically */
+    margin-bottom: 0;
+}
         
-        .tip-content ul {
-            margin-top: 0.5rem;
-        }
-        
-        .tip-content li {
-            margin-bottom: 1rem;
-        }
+.tip-content ul {
+    margin-top: 0.5rem;
+    list-style-type: none;
+    display: flex;          /* Make the ul a flex container */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center;     /* Center items horizontally */
+    padding: 0;             /* Remove default padding */
+    margin-bottom: 0;
+}
+
+.tip-content li {
+    margin-bottom: 20px;
+    text-align: center;    /* Center the text within the list items */
+    width: 100%;           /* Ensure they take full width to be centered effectively */
+}
         
 .tip-icon {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    opacity: 1;
-    font-size: 2.5rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2.5rem;
+  opacity: 0;             /* Hidden by default */
+  transition: opacity 0.3s ease;
+  pointer-events: none;   /* Prevent hover stealing */
+}
+
+.tip-card:hover .tip-icon {
+  opacity: 1;             /* Appear on hover */
 }
