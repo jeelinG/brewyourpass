@@ -9,7 +9,6 @@ fetch('header.html')
 document.addEventListener('DOMContentLoaded', () => {
 
     const favWordInput = document.getElementById('fav-word');
-    const specialDateInput = document.getElementById('special-date');
     const luckySymbolInput = document.getElementById('lucky-symbol');
 
     const passwordLengthInput = document.getElementById('password-length');
@@ -20,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const complexityLabels = document.querySelectorAll('#complexityLabels span');
 
     const favWordError = document.getElementById('fav-word-error');
-    const specialDateError = document.getElementById('special-date-error');
     const luckySymbolError = document.getElementById('lucky-symbol-error');
 
     const copyBtn = document.getElementById('copy-btn');
@@ -42,12 +40,12 @@ document.addEventListener('DOMContentLoaded', () => {
         d: ['D', '[)'],
         e: ['3', 'E'],
         f: ['F'],
-        g: ['9', '6', 'G'],
-        h: ['H'],
-        i: ['1', '!', 'I', '|'],
+        g: ['9', 'G'],
+        h: ['#', 'H'],
+        i: ['1', '!', 'I'],
         j: ['J'],
         k: ['K', '<'],
-        l: ['1', 'L'],
+        l: ['1', '|', 'L'],
         m: ['M'],
         n: ['N'],
         o: ['0', 'O', '()'],
@@ -61,14 +59,14 @@ document.addEventListener('DOMContentLoaded', () => {
         w: ['W', 'vv'],
         x: ['X', '><'],
         y: ['Y'],
-        z: ['2', 'Z'],
+        z: ['2', 'Z', '%'],
     };
 
     // Additional random characters for padding
     const additionalChars = {
         letters: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
         numbers: '0123456789',
-        symbols: '!@#$%^&*()_+-=[]{};:,.<>?'
+        symbols: '!@#$%&*()_+-=<>?'
     };
 
     function updateLengthDisplay(val) {
@@ -112,14 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    specialDateInput.addEventListener('input', () => {
-        if (!specialDateInput.value) {
-            setFieldError(specialDateInput, specialDateError, 'Please select a date.');
-        } else {
-            clearFieldError(specialDateInput, specialDateError);
-        }
-    });
-
     luckySymbolInput.addEventListener('input', () => {
         const value = luckySymbolInput.value.trim();
         if (!value) {
@@ -135,7 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let isValid = true;
 
         const favWord = favWordInput.value.trim();
-        const specialDate = specialDateInput.value;
         const luckySymbol = luckySymbolInput.value.trim();
 
         if (!favWord) {
@@ -149,13 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
             isValid = false;
         } else {
             clearFieldError(favWordInput, favWordError);
-        }
-
-        if (!specialDate) {
-            setFieldError(specialDateInput, specialDateError, 'Please select a date.');
-            isValid = false;
-        } else {
-            clearFieldError(specialDateInput, specialDateError);
         }
 
         if (!luckySymbol) {
@@ -201,7 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!validateInputs()) return;
 
         const favWord = favWordInput.value.trim();
-        const specialDate = specialDateInput.value.replaceAll('-', '');
         const luckySymbol = luckySymbolInput.value.trim();
         const rules = complexityRules[complexity];
         const targetLength = parseInt(passwordLengthInput.value);
@@ -224,27 +205,26 @@ document.addEventListener('DOMContentLoaded', () => {
             processedWords.push(processedWord);
         }
 
-        // Combine all base components
-        let basePassword = processedWords.join('') + specialDate + luckySymbol;
+        // Combine all base components (without date)
+        let basePassword = processedWords.join('') + luckySymbol;
         
         // If base password is longer than target, intelligently truncate
         if (basePassword.length > targetLength) {
             // Ensure we keep recognizable parts of words and essential components
             let truncated = '';
-            let wordsUsed = Math.max(1, Math.floor(targetLength * 0.4 / (processedWords.length || 1)));
+            let wordsUsed = Math.max(1, Math.floor(targetLength * 0.6 / (processedWords.length || 1)));
             
             // Add portions of processed words
-            for (let i = 0; i < processedWords.length && truncated.length < targetLength - luckySymbol.length - 2; i++) {
+            for (let i = 0; i < processedWords.length && truncated.length < targetLength - luckySymbol.length; i++) {
                 let wordPortion = processedWords[i].substring(0, Math.max(2, wordsUsed));
                 truncated += wordPortion;
             }
             
-            // Add part of date and lucky symbol
+            // Add lucky symbol at the end
             let remainingLength = targetLength - truncated.length;
-            if (remainingLength > luckySymbol.length) {
-                truncated += specialDate.substring(0, remainingLength - luckySymbol.length);
+            if (remainingLength > 0) {
+                truncated += luckySymbol.substring(0, remainingLength);
             }
-            truncated += luckySymbol;
             
             basePassword = truncated.substring(0, targetLength);
         }
