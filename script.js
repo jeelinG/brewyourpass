@@ -29,9 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const complexityLevels = ['basic', 'medium', 'complex'];
     const complexityRules = {
-        basic: { letterSubstitutionChance: 0.05, caseChangeChance: 0.2, symbolInsertionChance: 0.1 },
-        medium: { letterSubstitutionChance: 0.1, caseChangeChance: 0.4, symbolInsertionChance: 0.2 },
-        complex: { letterSubstitutionChance: 0.2, caseChangeChance: 0.6, symbolInsertionChance: 0.5 },
+        basic: { letterSubstitutionChance: 0.05, caseChangeChance: 0.1, symbolInsertionChance: 0.1 },
+        medium: { letterSubstitutionChance: 0.1, caseChangeChance: 0.2, symbolInsertionChance: 0.2 },
+        complex: { letterSubstitutionChance: 0.2, caseChangeChance: 0.3, symbolInsertionChance: 0.3 },
     };
 
     const substitutions = {
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const luckySymbol = luckySymbolInput.value.trim();
 
         if (!favWord) {
-            setFieldError(favWordInput, favWordError, 'Key in phrases up to 50 chars.');
+            setFieldError(favWordInput, favWordError, 'Key in words up to 50 chars.');
             isValid = false;
         } else if (!/^[A-Za-z\s]+$/.test(favWord)) {
             setFieldError(favWordInput, favWordError, 'Only letters and spaces are allowed.');
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return isValid;
     }
 
-    // ✅ Updated password generator with logic applied across all levels
+    // Updated password generator with logic applied across all levels
     function generatePassword() {
         if (!validateInputs()) return;
 
