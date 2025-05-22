@@ -29,24 +29,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const complexityLevels = ['basic', 'medium', 'complex'];
     const complexityRules = {
-        basic: { letterSubstitutionChance: 0.05, caseChangeChance: 0.1, symbolInsertionChance: 0.1 },
-        medium: { letterSubstitutionChance: 0.1, caseChangeChance: 0.2, symbolInsertionChance: 0.2 },
-        complex: { letterSubstitutionChance: 0.2, caseChangeChance: 0.3, symbolInsertionChance: 0.3 },
+        basic: { letterSubstitutionChance: 0.3, caseChangeChance: 0.4, symbolInsertionChance: 0.2 },
+        medium: { letterSubstitutionChance: 0.5, caseChangeChance: 0.6, symbolInsertionChance: 0.3 },
+        complex: { letterSubstitutionChance: 0.7, caseChangeChance: 0.8, symbolInsertionChance: 0.4 },
     };
 
+    // Enhanced character substitutions for better security
     const substitutions = {
-        a: ['@', '4'],
-        b: ['8'],
-        c: ['('],
-        e: ['3'],
-        g: ['9'],
-        h: ['#'],
-        i: ['1', '!'],
-        l: ['1'],
-        o: ['0'],
-        s: ['$', '5'],
-        t: ['7', '+'],
-        z: ['2'],
+        a: ['@', '4', 'A'],
+        b: ['8', '6', 'B'],
+        c: ['(', '<', 'C'],
+        d: ['D', '[)'],
+        e: ['3', 'E'],
+        f: ['F'],
+        g: ['9', '6', 'G'],
+        h: ['H'],
+        i: ['1', '!', 'I', '|'],
+        j: ['J'],
+        k: ['K', '<'],
+        l: ['1', 'L'],
+        m: ['M'],
+        n: ['N'],
+        o: ['0', 'O', '()'],
+        p: ['P', '9'],
+        q: ['Q', '9'],
+        r: ['R', '2'],
+        s: ['$', '5', 'S'],
+        t: ['7', '+', 'T'],
+        u: ['U', 'v'],
+        v: ['V'],
+        w: ['W', 'vv'],
+        x: ['X', '><'],
+        y: ['Y'],
+        z: ['2', 'Z'],
+    };
+
+    // Additional random characters for padding
+    const additionalChars = {
+        letters: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
+        numbers: '0123456789',
+        symbols: '!@#$%^&*()_+-=[]{};:,.<>?'
     };
 
     function updateLengthDisplay(val) {
@@ -149,7 +171,32 @@ document.addEventListener('DOMContentLoaded', () => {
         return isValid;
     }
 
-    // Updated password generator with logic applied across all levels
+    // Get random character from additional character sets
+    function getRandomAdditionalChar() {
+        const charTypes = [additionalChars.letters, additionalChars.numbers, additionalChars.symbols];
+        const selectedType = charTypes[Math.floor(Math.random() * charTypes.length)];
+        return selectedType[Math.floor(Math.random() * selectedType.length)];
+    }
+
+    // Process individual character with substitution and case changes
+    function processCharacter(char, rules) {
+        let processedChar = char.toLowerCase();
+        
+        // Apply character substitution
+        if (substitutions[processedChar] && Math.random() < rules.letterSubstitutionChance) {
+            const subOptions = substitutions[processedChar];
+            processedChar = subOptions[Math.floor(Math.random() * subOptions.length)];
+        }
+        
+        // Apply case changes for letters that weren't substituted with symbols
+        if (/[a-z]/i.test(processedChar) && Math.random() < rules.caseChangeChance) {
+            processedChar = Math.random() < 0.5 ? processedChar.toLowerCase() : processedChar.toUpperCase();
+        }
+        
+        return processedChar;
+    }
+
+    // Enhanced password generator
     function generatePassword() {
         if (!validateInputs()) return;
 
@@ -159,53 +206,82 @@ document.addEventListener('DOMContentLoaded', () => {
         const rules = complexityRules[complexity];
         const targetLength = parseInt(passwordLengthInput.value);
 
-        let result = [];
-
-        // Split favWord by words and process each
-        let words = favWord.split(' ');
-        let processedWords = words.map((word, index) => {
-            let chars = [];
-
+        // Process favorite words
+        let processedWords = [];
+        const words = favWord.split(' ').filter(word => word.length > 0);
+        
+        for (let word of words) {
+            let processedWord = '';
             for (let char of word) {
-                if (substitutions[char.toLowerCase()] && Math.random() < rules.letterSubstitutionChance) {
-                    const subOptions = substitutions[char.toLowerCase()];
-                    char = subOptions[Math.floor(Math.random() * subOptions.length)];
-                }
-
-                if (/[a-z]/i.test(char) && Math.random() < rules.caseChangeChance) {
-                    char = Math.random() < 0.5 ? char.toLowerCase() : char.toUpperCase();
-                }
-
-                chars.push(char);
-
-                if (Math.random() < rules.symbolInsertionChance && luckySymbol.length > 0) {
-                    chars.push(luckySymbol[Math.floor(Math.random() * luckySymbol.length)]);
+                processedWord += processCharacter(char, rules);
+                
+                // Occasionally insert lucky symbol within words
+                if (Math.random() < rules.symbolInsertionChance * 0.5) {
+                    const randomLuckyChar = luckySymbol[Math.floor(Math.random() * luckySymbol.length)];
+                    processedWord += randomLuckyChar;
                 }
             }
+            processedWords.push(processedWord);
+        }
 
-            // Join with lucky symbol as separator between words
-            return chars.join('') + (index < words.length - 1 ? luckySymbol : '');
-        });
-
-        // Join all parts of the password
-        let base = processedWords.join('') + specialDate + luckySymbol;
-
-        for (let char of base) {
-            result.push(char);
-
-            if (Math.random() < rules.symbolInsertionChance && luckySymbol.length > 0) {
-                const randSymbol = luckySymbol[Math.floor(Math.random() * luckySymbol.length)];
-                result.push(randSymbol);
+        // Combine all base components
+        let basePassword = processedWords.join('') + specialDate + luckySymbol;
+        
+        // If base password is longer than target, intelligently truncate
+        if (basePassword.length > targetLength) {
+            // Ensure we keep recognizable parts of words and essential components
+            let truncated = '';
+            let wordsUsed = Math.max(1, Math.floor(targetLength * 0.4 / (processedWords.length || 1)));
+            
+            // Add portions of processed words
+            for (let i = 0; i < processedWords.length && truncated.length < targetLength - luckySymbol.length - 2; i++) {
+                let wordPortion = processedWords[i].substring(0, Math.max(2, wordsUsed));
+                truncated += wordPortion;
+            }
+            
+            // Add part of date and lucky symbol
+            let remainingLength = targetLength - truncated.length;
+            if (remainingLength > luckySymbol.length) {
+                truncated += specialDate.substring(0, remainingLength - luckySymbol.length);
+            }
+            truncated += luckySymbol;
+            
+            basePassword = truncated.substring(0, targetLength);
+        }
+        // If base password is shorter than target, add random elements
+        else if (basePassword.length < targetLength) {
+            let additionalLength = targetLength - basePassword.length;
+            
+            for (let i = 0; i < additionalLength; i++) {
+                if (Math.random() < 0.4) {
+                    // Add lucky symbol character
+                    basePassword += luckySymbol[Math.floor(Math.random() * luckySymbol.length)];
+                } else {
+                    // Add random character
+                    basePassword += getRandomAdditionalChar();
+                }
             }
         }
 
-        let finalPassword = result.join('').replaceAll(' ', '');
-
+        // Final security pass - ensure minimum character diversity
+        let finalPassword = basePassword.substring(0, targetLength);
+        
+        // Ensure minimum length of 8
         while (finalPassword.length < 8) {
             finalPassword += luckySymbol[Math.floor(Math.random() * luckySymbol.length)];
         }
 
-        resultInput.value = finalPassword.slice(0, Math.min(targetLength, 20));
+        // Apply final random transformations for additional security
+        let passwordArray = finalPassword.split('');
+        for (let i = 0; i < passwordArray.length; i++) {
+            if (Math.random() < 0.1) { // 10% chance for final transformation
+                if (/[a-z]/i.test(passwordArray[i])) {
+                    passwordArray[i] = Math.random() < 0.5 ? passwordArray[i].toLowerCase() : passwordArray[i].toUpperCase();
+                }
+            }
+        }
+
+        resultInput.value = passwordArray.join('').slice(0, Math.min(targetLength, 128));
     }
 
     function copyPassword() {
