@@ -1,17 +1,13 @@
-
-//Fetch header for all pages
-
+// Fetch header for all pages
 fetch('header.html')
     .then(res => res.text())
     .then(data => {
-    document.getElementById('nav-placeholder').innerHTML = data;
+        document.getElementById('nav-placeholder').innerHTML = data;
     });
 
-//Password generator
-
+// Password generator
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // Password generator - references
+
     const favWordInput = document.getElementById('fav-word');
     const specialDateInput = document.getElementById('special-date');
     const luckySymbolInput = document.getElementById('lucky-symbol');
@@ -29,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const copyBtn = document.getElementById('copy-btn');
 
-    // Complexity of password and probability
     let complexity = 'basic';
 
     const complexityLevels = ['basic', 'medium', 'complex'];
@@ -39,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
         complex: { letterSubstitutionChance: 0.2, caseChangeChance: 0.6, symbolInsertionChance: 0.5 },
     };
 
-    // Password generator - substitution dictionary
     const substitutions = {
         a: ['@', '4'],
         b: ['8'],
@@ -51,11 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
         l: ['1'],
         o: ['0'],
         s: ['$', '5'],
-        t: ['7'],
+        t: ['7', '+'],
         z: ['2'],
     };
 
-    // update preferred length of password in range slider
     function updateLengthDisplay(val) {
         lengthDisplay.textContent = val;
     }
@@ -70,24 +63,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Generate password
     generateBtn.addEventListener('click', generatePassword);
 
-    // Set field errors
     function setFieldError(input, errorElem, message) {
         input.classList.add('input-error');
         errorElem.textContent = message;
         errorElem.classList.remove('hidden');
     }
 
-    // Clear field errors
     function clearFieldError(input, errorElem) {
         input.classList.remove('input-error');
         errorElem.textContent = '';
         errorElem.classList.add('hidden');
     }
 
-    // Real-time validation for input fields
     favWordInput.addEventListener('input', () => {
         const value = favWordInput.value.trim();
         if (!value) {
@@ -120,7 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Function to validate all input fields before generating password
     function validateInputs() {
         let isValid = true;
 
@@ -128,7 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const specialDate = specialDateInput.value;
         const luckySymbol = luckySymbolInput.value.trim();
 
-        // Favourite word validation
         if (!favWord) {
             setFieldError(favWordInput, favWordError, 'Key in phrases up to 50 chars.');
             isValid = false;
@@ -142,7 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
             clearFieldError(favWordInput, favWordError);
         }
 
-        // Special date validation
         if (!specialDate) {
             setFieldError(specialDateInput, specialDateError, 'Please select a date.');
             isValid = false;
@@ -150,7 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
             clearFieldError(specialDateInput, specialDateError);
         }
 
-        // Lucky symbol validation
         if (!luckySymbol) {
             setFieldError(luckySymbolInput, luckySymbolError, 'Lucky number or symbol is required.');
             isValid = false;
@@ -164,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return isValid;
     }
 
-    // Main function to generate the password
+    // ✅ Updated password generator with logic applied across all levels
     function generatePassword() {
         if (!validateInputs()) return;
 
@@ -174,32 +159,55 @@ document.addEventListener('DOMContentLoaded', () => {
         const rules = complexityRules[complexity];
         const targetLength = parseInt(passwordLengthInput.value);
 
-        let base = (favWord + specialDate + luckySymbol).split('');
         let result = [];
 
-        base.forEach(char => {
-            if (substitutions[char] && Math.random() < rules.letterSubstitutionChance) {
-                char = substitutions[char][Math.floor(Math.random() * substitutions[char].length)];
-            } else if (/[a-z]/i.test(char) && Math.random() < rules.caseChangeChance) {
-                char = char === char.toLowerCase() ? char.toUpperCase() : char.toLowerCase();
+        // Split favWord by words and process each
+        let words = favWord.split(' ');
+        let processedWords = words.map((word, index) => {
+            let chars = [];
+
+            for (let char of word) {
+                if (substitutions[char.toLowerCase()] && Math.random() < rules.letterSubstitutionChance) {
+                    const subOptions = substitutions[char.toLowerCase()];
+                    char = subOptions[Math.floor(Math.random() * subOptions.length)];
+                }
+
+                if (/[a-z]/i.test(char) && Math.random() < rules.caseChangeChance) {
+                    char = Math.random() < 0.5 ? char.toLowerCase() : char.toUpperCase();
+                }
+
+                chars.push(char);
+
+                if (Math.random() < rules.symbolInsertionChance && luckySymbol.length > 0) {
+                    chars.push(luckySymbol[Math.floor(Math.random() * luckySymbol.length)]);
+                }
             }
+
+            // Join with lucky symbol as separator between words
+            return chars.join('') + (index < words.length - 1 ? luckySymbol : '');
+        });
+
+        // Join all parts of the password
+        let base = processedWords.join('') + specialDate + luckySymbol;
+
+        for (let char of base) {
             result.push(char);
-            if (Math.random() < rules.symbolInsertionChance) {
+
+            if (Math.random() < rules.symbolInsertionChance && luckySymbol.length > 0) {
                 const randSymbol = luckySymbol[Math.floor(Math.random() * luckySymbol.length)];
                 result.push(randSymbol);
             }
-        });
-
-        result = result.sort(() => 0.5 - Math.random()).join('').slice(0, targetLength);
-
-        while (result.length < 8) {
-            result += luckySymbol[Math.floor(Math.random() * luckySymbol.length)];
         }
 
-        resultInput.value = result.slice(0, 20);
+        let finalPassword = result.join('').replaceAll(' ', '');
+
+        while (finalPassword.length < 8) {
+            finalPassword += luckySymbol[Math.floor(Math.random() * luckySymbol.length)];
+        }
+
+        resultInput.value = finalPassword.slice(0, Math.min(targetLength, 20));
     }
 
-    // Function to copy the generated password to the clipboard
     function copyPassword() {
         const pass = document.getElementById('result').value;
         navigator.clipboard.writeText(pass).then(() => {
@@ -210,29 +218,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Attach the event listener to the copy button
     if (copyBtn) {
         copyBtn.addEventListener('click', copyPassword);
     }
-
 });
 
-// Form submission handling 
-    document.addEventListener('DOMContentLoaded', function () {
-        const form = document.getElementById('contactForm');
-        const responseDiv = document.getElementById('formResponse');
+// Form submission handling
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('contactForm');
+    const responseDiv = document.getElementById('formResponse');
 
-   form.addEventListener('submit', function (e) {
-     e.preventDefault(); // Prevent actual form submission
-
-     // Get form values (optional)
-     const name = document.getElementById('contactName').value;
-
-     // Dummy response
-     responseDiv.textContent = `Thanks, ${name || 'friend'}! We'll get back to you soon.`;
-
-     // Optionally clear form
-     form.reset();
-        });
-    })
-
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = document.getElementById('contactName').value;
+        responseDiv.textContent = `Thanks, ${name || 'friend'}! We'll get back to you soon.`;
+        form.reset();
+    });
+});
