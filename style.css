@@ -337,16 +337,7 @@ button {
   cursor: pointer;
   font-size: 16px;
   color: #5352aa;
-  border: 1px solid #5352aa;
-  /* background-color: #5352aa;s */
 }
-
-/* .button-wrapper {
-  display: flex;
-  justify-content: flex-end;
-  /* align-items: center;
-  margin-top: 10px; */
-} */
 
 .toggle-password:hover {
   color: #906ac9;
