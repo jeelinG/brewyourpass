@@ -294,6 +294,30 @@
 
 
 /* Password Strength*/
+
+.password-container {
+  position: relative;
+  width: 100%;
+  max-width: 450px; /* Adjust as needed */
+}
+
+.password-container input[type="password"],
+.password-container input[type="text"] {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px 40px 10px 10px; /* Add right padding for the icon */
+  box-sizing: border-box;
+}
+
+.password-container .toggle-password {
+  position: absolute;
+  top: 30%; /* Center vertically relative to input */
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #888;
+}
+
 .password-input {
   width: 95%;
   padding-right: 30px;
