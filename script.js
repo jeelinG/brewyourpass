@@ -287,7 +287,7 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', function (e) {
         e.preventDefault();
         const name = document.getElementById('contactName').value;
-        responseDiv.textContent = `Thanks, ${name || 'friend'}! We'll get back to you soon.`;
+        responseDiv.textContent = `Thanks, ${name || 'friend'}! We'll get back to you soon 😄`;
         form.reset();
     });
 });
@@ -307,7 +307,7 @@ const specialReq = document.getElementById('specialReq');
 const noCommonReq = document.getElementById('noCommonReq');
 
 const commonPasswords = [
-  'password', '123456', 'qwerty', 'abc123', 'password123',
+  'password', 'secret', 'iloveyou', '111111', '11111111', '123456', '12345678', '123456789', 'qwerty', 'qwerty123', 'abc123', 'password123',
   'admin', 'letmein', 'welcome'
 ];
 
