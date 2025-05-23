@@ -309,7 +309,6 @@
   box-sizing: border-box !important;
   margin: 0px;
   margin-right: 8px;
-
 }
 
 .password-input {
@@ -422,10 +421,10 @@ button {
     .image { justify-content: center; }
     .cauldron { width: 250px; height: 250px; }
     .nav-icon {
-      width: 108px;
-      font-size: 13px;
+      width: 95px;
+      font-size: 12px;
       font-weight: bold;
-      padding: 4px;
+      padding: 3px;
       }
     }
 
