@@ -78,7 +78,7 @@
   .nav-icon {
     text-decoration: none;
     color: white;
-    width: 140px;
+    width: 180px;
     font-size: 16px;
     font-weight: bold;
     }
@@ -281,12 +281,9 @@
     display: none;
     }
 
-  .image {
-    }
-
   .cauldron {
-    width: 340px;
-    height: 340px;
+    width: 300px;
+    height: 300px;
     }
 
   .text {
@@ -294,6 +291,104 @@
     flex-direction: column;
     justify-content: center;
     }
+
+
+/* Password Strength*/
+.password-input {
+  width: 95%;
+  padding-right: 30px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #5352aa;
+}
+
+.toggle-password:hover {
+  color: #906ac9;
+  opacity: 0.8;
+}
+
+.strength-meter {
+  margin: 1rem 0;
+  background: #eee;
+  border-radius: 10px;
+  height: 12px;
+  overflow: hidden;
+}
+
+.strength-bar {
+  height: 100%;
+  transition: width 0.4s ease-in-out;
+}
+
+.strength-text {
+  font-size: 13px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.score-display {
+  font-size: 14px;
+  color: #906ac9;
+  text-align: center;
+  margin: 8px 0;
+}
+
+.requirements h3 {
+  font-size: 15px;
+  color: #5352aa;
+  margin-bottom: 10px;
+}
+
+.requirement {
+  font-size: 13px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.requirement-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  font-size: 12px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.requirement.met .requirement-icon {
+  background-color: #28a745;
+  color: white;
+}
+
+.requirement:not(.met) .requirement-icon {
+  background-color: #dc3545;
+  color: white;
+}
+
+.very-weak { background-color: #dc3545; }
+.weak      { background-color: #fd7e14; }
+.fair      { background-color: #ffc107; }
+.good      { background-color: #20c997; }
+.strong    { background-color: #28a745; }
+
 
 /*For responsive web design*/
   @media (max-width: 760px) {

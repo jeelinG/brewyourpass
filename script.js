@@ -291,3 +291,103 @@ document.addEventListener('DOMContentLoaded', function () {
         form.reset();
     });
 });
+
+// === Password Strength Logic ===
+const passwordInput = document.getElementById('passwordInput');
+const toggleBtn = document.getElementById('toggleBtn');
+const strengthBar = document.getElementById('strengthBar');
+const strengthText = document.getElementById('strengthText');
+const scoreDisplay = document.getElementById('scoreDisplay');
+
+const lengthReq = document.getElementById('lengthReq');
+const uppercaseReq = document.getElementById('uppercaseReq');
+const lowercaseReq = document.getElementById('lowercaseReq');
+const numberReq = document.getElementById('numberReq');
+const specialReq = document.getElementById('specialReq');
+const noCommonReq = document.getElementById('noCommonReq');
+
+const commonPasswords = [
+  'password', '123456', 'qwerty', 'abc123', 'password123',
+  'admin', 'letmein', 'welcome'
+];
+
+// Toggle password visibility
+toggleBtn.addEventListener('click', () => {
+  const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+  passwordInput.setAttribute('type', type);
+  toggleBtn.textContent = type === 'password' ? '👁️' : '🙈';
+});
+
+// Live password input check
+passwordInput.addEventListener('input', () => {
+  checkPasswordStrength(passwordInput.value);
+});
+
+function checkPasswordStrength(password) {
+  if (password.length === 0) {
+    resetStrength();
+    return;
+  }
+
+  let score = 0;
+  const lengthOK = password.length >= 8;
+  const upperOK = /[A-Z]/.test(password);
+  const lowerOK = /[a-z]/.test(password);
+  const numberOK = /\d/.test(password);
+  const specialOK = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
+  const uncommonOK = !commonPasswords.includes(password.toLowerCase());
+
+  updateRequirement(lengthReq, lengthOK);
+  updateRequirement(uppercaseReq, upperOK);
+  updateRequirement(lowercaseReq, lowerOK);
+  updateRequirement(numberReq, numberOK);
+  updateRequirement(specialReq, specialOK);
+  updateRequirement(noCommonReq, uncommonOK);
+
+  if (lengthOK) score++;
+  if (upperOK) score++;
+  if (lowerOK) score++;
+  if (numberOK) score++;
+  if (specialOK) score++;
+  if (uncommonOK) score++;
+  if (password.length >= 12) score++;
+  if (password.length >= 16) score++;
+
+  updateStrengthUI(score);
+}
+
+function updateRequirement(el, pass) {
+  if (pass) {
+    el.classList.add('met');
+    el.querySelector('.requirement-icon').textContent = '✓';
+  } else {
+    el.classList.remove('met');
+    el.querySelector('.requirement-icon').textContent = '✗';
+  }
+}
+
+function updateStrengthUI(score) {
+  const levels = ['very-weak', 'weak', 'fair', 'good', 'strong'];
+  const labels = ['Very Weak', 'Weak', 'Fair', 'Good', 'Strong'];
+  const levelIndex = Math.min(Math.floor(score / 2), levels.length - 1);
+
+  strengthBar.className = `strength-bar ${levels[levelIndex]}`;
+  strengthBar.style.width = `${(score / 8) * 100}%`;
+  strengthText.textContent = labels[levelIndex];
+  strengthText.className = `strength-text ${levels[levelIndex]}`;
+  scoreDisplay.textContent = `Strength Score: ${score}/8`;
+}
+
+function resetStrength() {
+  strengthBar.style.width = '0%';
+  strengthBar.className = 'strength-bar';
+  strengthText.textContent = 'Enter a password to check its strength';
+  strengthText.className = 'strength-text';
+  scoreDisplay.textContent = '';
+
+  [lengthReq, uppercaseReq, lowercaseReq, numberReq, specialReq, noCommonReq].forEach(req => {
+    req.classList.remove('met');
+    req.querySelector('.requirement-icon').textContent = '✗';
+  });
+}
+
