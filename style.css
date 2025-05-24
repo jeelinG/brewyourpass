@@ -534,3 +534,26 @@ button {
     .tip-card:hover .tip-icon {
       opacity: 1;             /* Appear on hover */
       }
+
+.radio-group {
+  display: flex;
+  justify-content: center;   /* Horizontally center the buttons */
+  gap: 2rem;                 /* Space between buttons */
+  margin-top: 1rem;
+  margin-bottom: 20px
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+}
+
+.radio-option input[type="radio"] {
+  accent-color: #fa5c97;  /* Match your theme color */
+  width: 16px;
+  height: 16px;
+}

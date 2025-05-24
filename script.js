@@ -14,8 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const lengthDisplay = document.getElementById('length-display');
   const generateBtn = document.getElementById('generate-btn');
   const resultInput = document.getElementById('result');
-  const complexitySlider = document.getElementById('complexity');
-  const complexityLabels = document.querySelectorAll('#complexityLabels span');
 
   const favWordError = document.getElementById('fav-word-error');
   const luckySymbolError = document.getElementById('lucky-symbol-error');
@@ -47,13 +45,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   passwordLengthInput.addEventListener('input', e => lengthDisplay.textContent = e.target.value);
 
-  complexitySlider.addEventListener('input', () => {
-    const value = parseInt(complexitySlider.value);
-    complexity = complexityLevels[value];
-    complexityLabels.forEach((label, index) => {
-      label.classList.toggle('active', index === value);
-    });
+const complexityRadios = document.querySelectorAll('input[name="complexity"]');
+
+complexityRadios.forEach(radio => {
+  radio.addEventListener('change', () => {
+    if (radio.checked) {
+      complexity = radio.value;
+    }
   });
+});
 
   generateBtn.addEventListener('click', generatePassword);
 
