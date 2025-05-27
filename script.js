@@ -118,6 +118,9 @@ complexityRadios.forEach(radio => {
     } else if (/^[A-Za-z\s]+$/.test(luckySymbol)) {
       setFieldError(luckySymbolInput, luckySymbolError, 'Letters and spaces are not allowed.');
       isValid = false;
+    } else if (luckySymbol.length > 50) {
+      setFieldError(luckySymbolInput, luckySymbolError, 'Maximum 50 characters allowed.');
+      isValid = false;
     } else {
       clearFieldError(luckySymbolInput, luckySymbolError);
     }
@@ -159,12 +162,9 @@ complexityRadios.forEach(radio => {
     const words = favWord.split(' ').filter(Boolean);
 
     for (let word of words) {
-      for (let char of word) {
-        processed += processCharacter(char, rules);
-        if (Math.random() < rules.symbolInsertionChance * 0.5) {
-          processed += luckySymbol[Math.floor(Math.random() * luckySymbol.length)];
-        }
-      }
+     for (let char of word) {
+       processed += processCharacter(char, rules);
+     }
     }
 
     processed += luckySymbol;
